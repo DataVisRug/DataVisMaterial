@@ -1,0 +1,142 @@
+---
+title: "Data Visualization Techniques"
+author: "Venustiano Soancatl Aguilar"
+email: "v.soancatl.aguilar@rug.nl"
+format:
+  revealjs:
+    self-contained: true
+---
+
+## Definitions
+
+
+---
+
+<h2>Scientific Visualization</h2>
+
+<p>
+  <em>“The use of computers or techniques for comprehending data or to extract knowledge from the results of simulations, computations, or measurements”.</em>
+  <br>
+  <small>Examples: CT Scans, MRI, Inertial sensors.</small>
+  <br>
+  <span class="cite">[McCormick et al., 1987]</span>
+</p>
+
+</section>
+
+---
+
+<section>
+
+<h2>Information Visualization</h2>
+
+<p>
+  <em>“Visualization applied to abstract quantities and relations in order to get insight in the data”.</em>
+  <br>
+  <small>Examples: matplotlib, seaborn, ggplot2</small>
+  <br>
+  <span class="cite">[Chi, 2000]</span>
+</p>
+
+</section>
+
+---
+
+<section>
+
+<h2>Visual Analytics</h2>
+
+<p>
+  <em>“The science of analytical reasoning facilitated by interactive visual interfaces”.</em>
+  <br>
+  <small>Examples: Tableau, Plotly, Bokeh, Panel, etc.</small>
+  <br>
+  <span class="cite">[Thomas and Cook, 2005]</span>
+</p>
+
+</section>
+
+---
+
+### When is visualization useful?
+
+<ol>
+  <li>
+    <strong>Too much data:</strong>
+    <br>
+    <small>
+      <ul class="small-list">
+        <li>do not have time to analyze it all (or read the analysis results)</li>
+        <li>show an overview, discover which questions are relevant</li>
+        <li>refine search either visually or analytically</li>
+      </ul>
+    </small>
+  </li>
+
+  <li>
+    <strong>Qualitative / complex questions:</strong>
+    <br>
+    <small>
+      <ul class="small-list">
+        <li>cannot capture the question compactly/exactly in a query</li>
+        <li>question/goal is inherently qualitative: understand what is going on</li>
+        <li>show an overview, answer the question by seeing relevant patterns</li>
+      </ul>
+    </small>
+  </li>
+
+  <li>
+    <strong>Communication:</strong>
+    <br>
+    <small>
+      <ul class="small-list">
+        <li>transfer results to different (non-technical) stakeholders</li>
+        <li>learn about a new domain or problem</li>
+      </ul>
+    </small>
+  </li>
+</ol>
+
+
+---
+
+### Why is Visualization Useful?
+
+::: columns
+::: {.column style="font-size: 0.5em;"}
+
+- (in)validate the fit of a given model with a dataset
+- find the distribution of values over a given domain
+:::
+::: {.column style="font-size: 0.5em;"}
+- find the correlation (or lack thereof) of several variables
+- answer precise (quantitative) questions
+:::
+:::
+
+![](images/anscombe.svg){width=60% fig-align="center"}
+
+<p class="figure-caption" style="font-size:0.3em; line-height:1.2; color:#666;">
+  Anscombe's quartet — original datasets described by F. J. Anscombe (1973). Image file: <a href="https://commons.wikimedia.org/wiki/File:Anscombe.svg">Wikimedia Commons: Anscombe.svg</a>. See the Wikipedia article <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">"Anscombe's quartet"</a> for background and references. Accessed 2025-10-26.
+</p>
+
+---
+
+### Why is Visualization?
+
+::: columns
+::: {.column style="font-size: 0.5em;"}
+
+- find support for a new model in the data
+- find which model best fits a dataset
+:::
+
+::: {.column style="font-size: 0.5em;"}
+- find the phenomenon behind the data
+- answer more vague (qualitative) questions
+:::
+
+
+---
+
+
