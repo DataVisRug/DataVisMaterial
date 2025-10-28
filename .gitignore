@@ -256,6 +256,7 @@ material/slides/vis_slides/slides_files/
 _site/
 *.pdf
 *.docx
+*.quarto_ipynb
 
 # OS files
 .DS_Store

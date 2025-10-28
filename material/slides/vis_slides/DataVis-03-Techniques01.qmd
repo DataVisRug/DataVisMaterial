@@ -1,0 +1,455 @@
+---
+title: "Data Visualization Techniques"
+author: "Venustiano Soancatl Aguilar"
+email: "v.soancatl.aguilar@rug.nl"
+format:
+  revealjs:
+    self-contained: true
+---
+
+## Content {.smaller}
+
+
+- **Preprocessing**
+    * Table formats
+    * Normalization
+- **Visualization techniques**
+    * Distributions
+        + Histograms
+        + Violing plots
+        + Box plots
+- **Preparing for publication**
+
+---
+
+## Wide format
+
+- Wide format: each subject/measure is its own column. Good for human-readable reports and some modeling functions.
+
+
+Example (wide):
+```{r}
+if (!requireNamespace("gt")) install.packages("gt")
+
+library(gt)
+
+wide <- data.frame(
+  id = 1:2,
+  math = c(90, 85),
+  english = c(80, 88)
+)
+
+wide %>% 
+  gt() %>% 
+  tab_header(
+    title = "Wide format",
+    subtitle = "Each repeated measure has its own column"
+  ) %>% 
+  cols_align(align = "center") %>% 
+  fmt_number(columns = c(math, english), decimals = 0)
+```
+
+---
+
+## Long format
+
+- Long (tidy) format: one observation per row, each variable is a column (key-value pair for repeated measures). Preferred for tidy data workflows (dplyr/tidyr, pandas melt).
+
+```{r}
+library(data.table)
+
+# convert to data.table (in-place)
+setDT(wide)
+
+# melt to long (tidy) format
+long <- melt(
+  wide,
+  id.vars = "id",               # columns that identify each observation
+  measure.vars = c("math","english"),
+  variable.name = "subject",    # name for the variable column
+  value.name = "score",         # name for the value column
+  variable.factor = FALSE       # keep subject as character, not factor
+)
+
+long %>%
+  gt() %>%
+  tab_header(
+    title = "Long (tidy) format",
+    subtitle = "One observation per row (id + subject -> score)"
+  ) %>%
+  cols_align(align = "center") %>%
+  fmt_number(columns = "score", decimals = 0)
+```
+
+---
+
+## Exergame dataset ^[[Visual Data Exploration for Balance Quantification in Real-Time During Exergaming](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0170906)]
+
+```{r}
+csv_path <- "../../data/exergamewf.csv"
+
+if (!file.exists(csv_path)) {
+  stop(sprintf("File not found: %s\nPlease check the path relative to this .qmd file.", csv_path))
+}
+
+dt <- fread(csv_path)  # fast reader; result is a data.table
+
+info <- data.frame(
+  metric = c("rows", "columns"),
+  value = c(nrow(dt), ncol(dt))
+)
+
+# info %>%
+#   gt() %>%
+#   tab_header(
+#     title = "Dataset dimensions",
+#     subtitle = csv_path
+#   ) %>%
+#   fmt_number(columns = "value", decimals = 0) %>%
+#   cols_align(align = "center")
+
+n_head <- 10
+head_dt <- head(dt, n_head)
+
+head_dt %>%
+  gt() %>%
+  tab_header(
+    # subtitle = "first 10 rows",
+    title = paste0("First ", n_head, " rows of ", csv_path, " (",nrow(dt), "x", ncol(dt),"), 40 participants")
+  ) %>%
+  cols_align(align = "center")
+```
+
+---
+
+## `exergamewt.csv` into long format {.smaller}
+
+1. Launch [mybinder](https://mybinder.org/v2/gh/Venustiano/DataVis2/HEAD?urlpath=lab)
+2. Go to the `./material/data` folder and create a new `python/R` notebook
+3. Use the `sparkle icon` on cell toolbar to show the inline chat popover.
+4. Use the following prompts to generate the required code:
+    a. Write `python` and `R` code to see the columns of the exergamewf.csv file.
+    b. Convert the `<exergamewf_data>` into a `data.table` and create a long format table using the ‘iSubj', 'trial', 'Age', 'Decade' and ‘older’ columns as keys. 
+    c. Plot a histogram in ggplot of the 'value' column of the `<exergamewf_long>` table.
+
+---
+
+## Histogram
+
+```{r}
+library(ggplot2)
+
+# make sure dt is a data.table
+setDT(dt)
+
+# a) melt into long format using the given key columns
+id_vars <- c("iSubj", "trial", "Age", "Decade", "older")
+
+# sanity check: ensure id_vars exist
+missing_ids <- setdiff(id_vars, names(dt))
+if (length(missing_ids) > 0) stop("Missing required id columns: ", paste(missing_ids, collapse = ", "))
+
+measure_vars <- setdiff(names(dt), id_vars)  # everything else becomes measures
+if (length(measure_vars) == 0) stop("No measure columns found to melt.")
+
+long_dt <- melt(
+  dt,
+  id.vars = id_vars,
+  measure.vars = measure_vars,
+  variable.name = "variable",
+  value.name = "value",
+  variable.factor = FALSE
+)
+
+# show a quick preview
+# print(head(long_dt, 10))
+
+# b) plot histogram of the 'value' column
+# Convert value to numeric where possible (suppress warnings for coercion)
+long_dt[, value_num := suppressWarnings(as.numeric(value))]
+
+# Keep only rows that successfully converted to numeric
+plot_dt <- long_dt[!is.na(value_num)]
+
+if (nrow(plot_dt) == 0) {
+  stop("No numeric values available in the melted 'value' column to plot a histogram.")
+}
+
+# Basic histogram with 30 bins (adjust bins/binwidth as you like)
+p <- ggplot(plot_dt, aes(x = value_num)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "white", alpha = 0.9) +
+  labs(
+    title = "Histogram of melted 'value' (numeric entries)",
+    x = "value",
+    y = "count"
+  ) +
+  theme_minimal()
+
+p
+```
+
+---
+
+## Normalization
+
+Standard score:
+
+$$x' = \frac{x-\mu}{\sigma}$$
+
+Min-Max Feature scaling:
+
+$$x' = \frac{x-min(x)}{max(x)-min(x)}$$
+
+---
+
+## After `min max` normalization
+
+```{r}
+ # if max == min, set normalized to 0 (or NA, choose behavior). Here we set 0.
+long_dt[, value_norm := (value - min(value)) / (max(value) - min(value)), by = .(variable)]
+
+# Plot 1: overall histogram of normalized values
+p_overall <- ggplot(long_dt, aes(x = value_norm)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "white", alpha = 0.9) +
+  labs(title = "Histogram of min-max normalized values (all variables)",
+       x = "value (normalized 0-1)",
+       y = "count") +
+  theme_minimal()
+
+print(p_overall)
+```
+
+---
+
+## Adding a distribution curve
+
+```{r}
+p_overall <- ggplot(long_dt, aes(x = value_norm)) +
+  geom_histogram(aes(y = ..density..),
+                 bins = 30,
+                 fill = "steelblue",
+                 color = "white",
+                 alpha = 0.9) +
+  geom_density(color = "darkred", size = 1, alpha = 0.6) +
+  labs(title = "Histogram of min-max normalized values (all variables)",
+       x = "value (normalized 0-1)",
+       y = "density") +
+  theme_minimal()
+
+print(p_overall)
+```
+
+---
+
+## Overlapping distributions^[[Source: FDV Histograms-densityplots, `(Fig7_11.. .ipynb)`](https://clauswilke.com/dataviz/histograms-density-plots.html#multiple-histograms-densities)]
+
+```{r}
+library(dviz.supp)
+library(tidyr)
+library(ggridges)
+
+cows %>% 
+  mutate(breed = as.character(breed)) %>%
+  filter(breed != "Canadian") -> cows_filtered
+
+# compute densities for sepal lengths
+cows_dens <- group_by(cows_filtered, breed) %>%
+  do(ggplot2:::compute_density(.$butterfat, NULL)) %>%
+  rename(butterfat = x)
+
+# get the maximum values
+cows_max <- filter(cows_dens, density == max(density)) %>%
+  ungroup() %>%
+  mutate(
+    hjust = c(0, 0, 0, 0),
+    vjust = c(0, 0, 0, 0),
+    nudge_x = c(-0.2, -0.2, 0.1, 0.23),
+    nudge_y = c(0.03, 0.03, -0.2, -0.06) 
+  )
+
+cows_p <- ggplot(cows_dens, aes(x = butterfat, y = density, color = breed, fill = breed)) + 
+  geom_density_line(stat = "identity") +
+  geom_text(
+    data = cows_max,
+    aes(
+      label = breed, hjust = hjust, vjust = vjust,
+      color = breed,
+      x = butterfat + nudge_x, 
+      y = density + nudge_y
+    ),
+    inherit.aes = FALSE,
+    size = 12/.pt
+  ) +
+  scale_color_manual(
+    values = darken(c("#56B4E9", "#E69F00", "#D55E00", "#009E73"), 0.3),
+    breaks = c("Ayrshire", "Guernsey", "Holstein-Friesian", "Jersey"),
+    guide = "none"
+  ) +
+  scale_fill_manual(
+    values = c("#56B4E950", "#E69F0050", "#D55E0050", "#009E7350"),
+    breaks = c("Ayrshire", "Guernsey", "Holstein-Friesian", "Jersey"),
+    guide = "none"
+  ) +
+  scale_x_continuous(
+    expand = c(0, 0),
+    labels = scales::percent_format(accuracy = 1, scale = 1),
+    name = "butterfat contents"
+  ) +
+  scale_y_continuous(limits = c(0, 1.99), expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_dviz_hgrid() +
+  theme(axis.line.x = element_blank())
+  
+cows_p
+```
+
+---
+
+## Ridgeline plot^[[Source: FDV Visualizing many distributions at once `(Fig9_9... .ipynb)`](https://clauswilke.com/dataviz/boxplots-violins.html#boxplots-violins-horizontal)]
+
+```{r}
+library(forcats)
+library(ggridges)
+
+lincoln_weather %>%
+  mutate(
+	month_short = fct_recode(
+  	Month,
+  	Jan = "January",
+  	Feb = "February",
+  	Mar = "March",
+  	Apr = "April",
+  	May = "May",
+  	Jun = "June",
+  	Jul = "July",
+  	Aug = "August",
+  	Sep = "September",
+  	Oct = "October",
+  	Nov = "November",
+  	Dec = "December"
+	)
+  ) %>%
+  mutate(month_short = fct_rev(month_short)) -> lincoln_df
+
+  bandwidth <- 3.4
+
+ggplot(lincoln_df, aes(x = `Mean Temperature [F]`, y = `Month`)) +
+  geom_density_ridges(
+	scale = 3, rel_min_height = 0.01,
+	bandwidth = bandwidth, fill = lighten("#56B4E9", .3), color = "white"
+  ) +
+  scale_x_continuous(
+	name = "mean temperature (°F)",
+	expand = c(0, 0), breaks = c(0, 25, 50, 75)
+  ) +
+  scale_y_discrete(name = NULL, expand = c(0, .2, 0, 2.6)) +
+  theme_dviz_grid() +
+  theme(
+	axis.text.y = element_text(vjust = 0),
+	plot.margin = margin(3, 7, 3, 1.5)
+  )
+
+```
+
+---
+
+## Meet the violin plot
+
+```{r}
+# Violin plot with boxplot + jittered points
+# p_violin <- ggplot(long_dt, aes(x = variable, y = value_norm)) +
+p_violin <- ggplot(long_dt, aes(x = factor(1), y = value_norm)) +
+  geom_violin(fill = "steelblue", alpha = 0.6, color = "darkred", trim = FALSE, size = 1) +
+  geom_boxplot(width = 0.04, outlier.shape = NA, fill = "white", alpha = 0.6) +
+  # geom_jitter(width = 0.12, height = 0, size = 0.6, alpha = 0.4, color = "black") +
+  scale_y_continuous(limits = c(0, 1), expand = c(0, 0)) +
+  labs(
+    title = "Violin plot of min–max normalized values",
+    x = "variable",
+    y = "value (normalized 0–1)"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid.minor = element_blank()
+  )
+
+print(p_violin)
+```
+
+
+## Packages and data
+
+```{r}
+getwd()
+
+library(reticulate)
+use_python("/opt/conda/bin/python", required = TRUE)
+```
+
+```{python}
+#| echo: true
+#| eval: true
+
+# Importing the packages
+import plotly.express as px
+import pandas as pd
+# Loading and displaying the data
+lf = pd.read_csv('../../data/exergamelf2.csv')
+lf.head()
+
+```
+
+---
+
+```{python}
+#| echo: true
+#| eval: true
+
+plot = px.violin(x=lf['myVars'], y=lf['normVal'])
+plot.show()
+```
+
+---
+
+## Overlapping violin plots
+
+```{python}
+#| echo: true
+#| eval: true
+
+plot = px.violin(x=lf['myVars'], y=lf['normVal'], color = lf["older"])
+plot.show()
+```
+
+## Preparing for publication {.smaller}
+
+- Remove unnecessary elements
+    * Color background
+    * Axis title
+- Select appropriate visual variables
+    * color
+- Add appropriate labels
+- Save a high resolution image
+- Avoid chart junk
+
+---
+
+## Colorbrewer
+
+
+[colorbrewer2.org](https://colorbrewer2.org){preview-link="true"}
+
+
+---
+
+## High quality plots with LaTex
+
+- tikz
+- tikzDevice (only in R)
+
+   `scripts/FDV/Fig2_3_temperature_plot_tikz.ipynb`
+- Useful for publications
+- Match plot and main text fonts
+- Can include complex mathematical formulae
+- `tikzDevice` works with r magic in jupyter notebooks
