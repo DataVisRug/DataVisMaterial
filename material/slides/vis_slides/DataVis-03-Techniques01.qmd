@@ -419,6 +419,13 @@ plot.show()
 #| eval: true
 
 plot = px.violin(x=lf['myVars'], y=lf['normVal'], color = lf["older"])
+# make violins overlap and improve visibility
+plot.update_traces(opacity=0.6, width=0.8)        # semi-transparent + narrower violins
+plot.update_layout(violinmode='overlay')          # overlay (instead of side-by-side)
+
+# optional: rotate x labels if long category names
+plot.update_layout(xaxis_tickangle=45)
+
 plot.show()
 ```
 
@@ -453,3 +460,62 @@ plot.show()
 - Match plot and main text fonts
 - Can include complex mathematical formulae
 - `tikzDevice` works with r magic in jupyter notebooks
+
+---
+
+## A ggplot plot
+
+```{r}
+#| eval: true
+#| echo: true
+p <- ggplot(long_dt, aes(x = variable, y = value_norm, fill = factor(older))) +
+  geom_violin(position = position_identity(),   # overlay violins at same x
+              alpha = 0.5, width = 0.8, trim = FALSE, color = NA) +
+# scale_y_continuous(limits = c(0, 1), expand = c(0, 0)) +
+  labs(title = "Overlapping violins of per-variable normalized values",
+       x = "variable",
+       y = "value (normalized 0-1)",
+       fill = "older",
+       color = "older") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+---
+
+```{r}
+print(p)
+
+```
+
+---
+
+## TikzDevice code
+
+```{r}
+#| eval: true
+#| echo: true
+library(tikzDevice)   # assume installed
+
+# 1) Write a standalone .tex that contains the TikZ picture
+tikz("p_plot.tex", width = 6, height = 4, standAlone = TRUE)
+print(p)   # print the ggplot object to the tikz device
+dev.off()
+
+# 2) Compile to PDF (requires a LaTeX engine available)
+# Option 1: via R's tools package (texi2pdf)
+tools::texi2dvi("p_plot.tex", pdf = TRUE, clean = TRUE)
+```
+
+---
+
+## TikzDevice result
+
+<embed title="My CV" src="p_plot.pdf" width="100%" height="480" />
+
+<!-- <div>
+  <iframe src="p_plot.pdf" width="100%" height="100%" style="border:0;">
+    This browser does not support iframes — open the PDF: <a href="p_plot.pdf" target="_blank">p_plot.pdf</a>
+  </iframe>
+</div> -->
