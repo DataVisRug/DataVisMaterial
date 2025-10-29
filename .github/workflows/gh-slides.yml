@@ -73,8 +73,8 @@ jobs:
           Rscript install.R
 
       # Setup Quarto CLI
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      # - name: Set up Quarto
+      #   uses: quarto-dev/quarto-actions/setup@v2
 
       # Render the Quarto project
       - name: Render Quarto Project
