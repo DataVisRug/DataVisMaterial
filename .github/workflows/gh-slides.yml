@@ -73,13 +73,17 @@ jobs:
           Rscript install.R
 
       # Setup Quarto CLI
-      # - name: Set up Quarto
-      #   uses: quarto-dev/quarto-actions/setup@v2
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
 
       # Render the Quarto project
       - name: Render Quarto Project
         run: |
-          quarto render material/slides/vis_slides
+          quarto render
+
+      - name: Inspect generated HTML for MathJax
+        run: |
+          grep -R "mathjax" _site/material/slides/vis_slides | head -n 10
 
       # Deploy to GitHub Pages
       - name: Publish to GitHub Pages
