@@ -15,4 +15,5 @@ format:
 website:
   sidebar:
     contents:
+      - material/slides/vis_slides/DataVis-03-Techniques01.qmd
       - material/slides/vis_slides/DataVis-05-Techniques02.qmd
