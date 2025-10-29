@@ -8,10 +8,8 @@ execute:
 
 format:
   revealjs:
-    html-math-method:
-      method: mathjax
-      url: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS_HTML-full
     include-in-header: 
+      - file: header.html
       - text: |
           <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 
