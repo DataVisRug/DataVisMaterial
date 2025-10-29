@@ -134,7 +134,7 @@
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#overlapping-violin-plots",
     "title": "Data Visualization Techniques",
     "section": "Overlapping violin plots",
-    "text": "Overlapping violin plots\n\nplot = px.violin(x=lf['myVars'], y=lf['normVal'], color = lf[\"older\"])\nplot.show()",
+    "text": "Overlapping violin plots\n\nplot = px.violin(x=lf['myVars'], y=lf['normVal'], color = lf[\"older\"])\n# make violins overlap and improve visibility\nplot.update_traces(opacity=0.6, width=0.8)        # semi-transparent + narrower violins\n\n                                                    \n\nplot.update_layout(violinmode='overlay')          # overlay (instead of side-by-side)\n\n                                                    \n\n# optional: rotate x labels if long category names\nplot.update_layout(xaxis_tickangle=45)\n\n                                                    \n\nplot.show()",
     "crumbs": [
       "Data Visualization Techniques"
     ]
@@ -165,6 +165,36 @@
     "title": "Data Visualization Techniques",
     "section": "High quality plots with LaTex",
     "text": "High quality plots with LaTex\n\ntikz\ntikzDevice (only in R)\nscripts/FDV/Fig2_3_temperature_plot_tikz.ipynb\nUseful for publications\nMatch plot and main text fonts\nCan include complex mathematical formulae\ntikzDevice works with r magic in jupyter notebooks",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#a-ggplot-plot",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#a-ggplot-plot",
+    "title": "Data Visualization Techniques",
+    "section": "A ggplot plot",
+    "text": "A ggplot plot\n\np &lt;- ggplot(long_dt, aes(x = variable, y = value_norm, fill = factor(older))) +\n  geom_violin(position = position_identity(),   # overlay violins at same x\n              alpha = 0.5, width = 0.8, trim = FALSE, color = NA) +\n# scale_y_continuous(limits = c(0, 1), expand = c(0, 0)) +\n  labs(title = \"Overlapping violins of per-variable normalized values\",\n       x = \"variable\",\n       y = \"value (normalized 0-1)\",\n       fill = \"older\",\n       color = \"older\") +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#tikzdevice-code",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#tikzdevice-code",
+    "title": "Data Visualization Techniques",
+    "section": "TikzDevice code",
+    "text": "TikzDevice code\n\nlibrary(tikzDevice)   # assume installed\n\n# 1) Write a standalone .tex that contains the TikZ picture\ntikz(\"p_plot.tex\", width = 6, height = 4, standAlone = TRUE)\nprint(p)   # print the ggplot object to the tikz device\ndev.off()\n\npng \n  2 \n\n# 2) Compile to PDF (requires a LaTeX engine available)\n# Option 1: via R's tools package (texi2pdf)\ntools::texi2dvi(\"p_plot.tex\", pdf = TRUE, clean = TRUE)",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#tikzdevice-result",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#tikzdevice-result",
+    "title": "Data Visualization Techniques",
+    "section": "TikzDevice result",
+    "text": "TikzDevice result",
     "crumbs": [
       "Data Visualization Techniques"
     ]
