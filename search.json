@@ -4,119 +4,170 @@
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#content",
     "title": "Data Visualization Techniques",
     "section": "Content",
-    "text": "Content\n\nPreprocessing\n\nTable formats\nNormalization\n\nVisualization techniques\n\nDistributions\n\nHistograms\nVioling plots\nBox plots\n\n\nPreparing for publication"
+    "text": "Content\n\nPreprocessing\n\nTable formats\nNormalization\n\nVisualization techniques\n\nDistributions\n\nHistograms\nVioling plots\nBox plots\n\n\nPreparing for publication",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#wide-format",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#wide-format",
     "title": "Data Visualization Techniques",
     "section": "Wide format",
-    "text": "Wide format\n\nWide format: each subject/measure is its own column. Good for human-readable reports and some modeling functions.\n\nExample (wide):\n\n\n\n\n\n\n\n\nWide format\n\n\nEach repeated measure has its own column\n\n\nid\nmath\nenglish\n\n\n\n\n1\n90\n80\n\n\n2\n85\n88"
+    "text": "Wide format\n\nWide format: each subject/measure is its own column. Good for human-readable reports and some modeling functions.\n\nExample (wide):\n\n\n\n\n\n\n\n\nWide format\n\n\nEach repeated measure has its own column\n\n\nid\nmath\nenglish\n\n\n\n\n1\n90\n80\n\n\n2\n85\n88",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#long-format",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#long-format",
     "title": "Data Visualization Techniques",
     "section": "Long format",
-    "text": "Long format\n\nLong (tidy) format: one observation per row, each variable is a column (key-value pair for repeated measures). Preferred for tidy data workflows (dplyr/tidyr, pandas melt).\n\n\n\n\n\n\n\n\n\nLong (tidy) format\n\n\nOne observation per row (id + subject -&gt; score)\n\n\nid\nsubject\nscore\n\n\n\n\n1\nmath\n90\n\n\n2\nmath\n85\n\n\n1\nenglish\n80\n\n\n2\nenglish\n88"
+    "text": "Long format\n\nLong (tidy) format: one observation per row, each variable is a column (key-value pair for repeated measures). Preferred for tidy data workflows (dplyr/tidyr, pandas melt).\n\n\n\n\n\n\n\n\n\nLong (tidy) format\n\n\nOne observation per row (id + subject -&gt; score)\n\n\nid\nsubject\nscore\n\n\n\n\n1\nmath\n90\n\n\n2\nmath\n85\n\n\n1\nenglish\n80\n\n\n2\nenglish\n88",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#exergame-dataset",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#exergame-dataset",
     "title": "Data Visualization Techniques",
     "section": "Exergame dataset 1",
-    "text": "Exergame dataset 1\n\n\n\n\n\n\n\n\nFirst 10 rows of ../../data/exergamewf.csv (400x16), 40 participants\n\n\niSubj\ntrial\nAge\nDecade\nmedLrms51\nmedTI51\nmedK\nmeanK\nmedSpeed\nmedTIms51\nmedLcovD51\nmedLsd51\nmedLcov51\nmedLrmslD51\nmedLsdD51\nolder\n\n\n\n\n1\n1\n76\n7\n0.1894931\n0.5895294\n207.8009\n333.8615\n0.4887213\n0.8063448\n0.7447658\n0.02060208\n0.10868742\n1.2591721\n0.12906757\nTRUE\n\n\n1\n2\n76\n7\n0.2041523\n0.6973378\n223.2943\n319.6015\n0.5182781\n0.7754507\n0.5069439\n0.01644558\n0.07814028\n1.2633661\n0.10590245\nTRUE\n\n\n1\n3\n76\n7\n0.2173473\n0.7861308\n136.4008\n272.4609\n0.5841934\n0.5119019\n0.7061267\n0.04737236\n0.23646721\n0.7827964\n0.13391692\nTRUE\n\n\n1\n4\n76\n7\n0.1695694\n1.0206954\n162.0346\n289.9279\n0.5901514\n0.4163981\n0.7018032\n0.03901695\n0.26536092\n0.4875698\n0.10863750\nTRUE\n\n\n1\n5\n76\n7\n0.1707855\n0.7697467\n141.7677\n300.6258\n0.5517064\n0.5500293\n0.7531606\n0.03679774\n0.23590743\n0.6461938\n0.11960964\nTRUE\n\n\n1\n6\n76\n7\n0.1897457\n0.8447487\n135.1824\n278.8230\n0.5872821\n0.4505710\n0.6610873\n0.04081446\n0.24733843\n0.5800137\n0.11645546\nTRUE\n\n\n1\n7\n76\n7\n0.2233555\n0.7575400\n194.8239\n300.0683\n0.5530803\n0.7030368\n0.3478552\n0.01441217\n0.06038580\n1.1837717\n0.08177191\nTRUE\n\n\n1\n8\n76\n7\n0.2409097\n0.7414884\n226.1782\n324.9164\n0.5225434\n0.7732494\n0.2648009\n0.01068888\n0.04361652\n1.4287875\n0.06494999\nTRUE\n\n\n1\n9\n76\n7\n0.2347833\n0.6954884\n201.0556\n300.1745\n0.5300633\n0.7637143\n0.3943936\n0.01528410\n0.06477809\n1.3693579\n0.09403986\nTRUE\n\n\n1\n10\n76\n7\n0.2138546\n0.6711597\n203.4890\n298.0097\n0.5402634\n0.7405751\n0.4288368\n0.01493881\n0.06972877\n1.2463371\n0.09307257\nTRUE\n\n\n\n\n\n\n\nVisual Data Exploration for Balance Quantification in Real-Time During Exergaming"
+    "text": "Exergame dataset 1\n\n\n\n\n\n\n\n\nFirst 10 rows of ../../data/exergamewf.csv (400x16), 40 participants\n\n\niSubj\ntrial\nAge\nDecade\nmedLrms51\nmedTI51\nmedK\nmeanK\nmedSpeed\nmedTIms51\nmedLcovD51\nmedLsd51\nmedLcov51\nmedLrmslD51\nmedLsdD51\nolder\n\n\n\n\n1\n1\n76\n7\n0.1894931\n0.5895294\n207.8009\n333.8615\n0.4887213\n0.8063448\n0.7447658\n0.02060208\n0.10868742\n1.2591721\n0.12906757\nTRUE\n\n\n1\n2\n76\n7\n0.2041523\n0.6973378\n223.2943\n319.6015\n0.5182781\n0.7754507\n0.5069439\n0.01644558\n0.07814028\n1.2633661\n0.10590245\nTRUE\n\n\n1\n3\n76\n7\n0.2173473\n0.7861308\n136.4008\n272.4609\n0.5841934\n0.5119019\n0.7061267\n0.04737236\n0.23646721\n0.7827964\n0.13391692\nTRUE\n\n\n1\n4\n76\n7\n0.1695694\n1.0206954\n162.0346\n289.9279\n0.5901514\n0.4163981\n0.7018032\n0.03901695\n0.26536092\n0.4875698\n0.10863750\nTRUE\n\n\n1\n5\n76\n7\n0.1707855\n0.7697467\n141.7677\n300.6258\n0.5517064\n0.5500293\n0.7531606\n0.03679774\n0.23590743\n0.6461938\n0.11960964\nTRUE\n\n\n1\n6\n76\n7\n0.1897457\n0.8447487\n135.1824\n278.8230\n0.5872821\n0.4505710\n0.6610873\n0.04081446\n0.24733843\n0.5800137\n0.11645546\nTRUE\n\n\n1\n7\n76\n7\n0.2233555\n0.7575400\n194.8239\n300.0683\n0.5530803\n0.7030368\n0.3478552\n0.01441217\n0.06038580\n1.1837717\n0.08177191\nTRUE\n\n\n1\n8\n76\n7\n0.2409097\n0.7414884\n226.1782\n324.9164\n0.5225434\n0.7732494\n0.2648009\n0.01068888\n0.04361652\n1.4287875\n0.06494999\nTRUE\n\n\n1\n9\n76\n7\n0.2347833\n0.6954884\n201.0556\n300.1745\n0.5300633\n0.7637143\n0.3943936\n0.01528410\n0.06477809\n1.3693579\n0.09403986\nTRUE\n\n\n1\n10\n76\n7\n0.2138546\n0.6711597\n203.4890\n298.0097\n0.5402634\n0.7405751\n0.4288368\n0.01493881\n0.06972877\n1.2463371\n0.09307257\nTRUE\n\n\n\n\n\n\n\nVisual Data Exploration for Balance Quantification in Real-Time During Exergaming",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#exergamewt.csv-into-long-format",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#exergamewt.csv-into-long-format",
     "title": "Data Visualization Techniques",
     "section": "exergamewt.csv into long format",
-    "text": "exergamewt.csv into long format\n\nLaunch mybinder\nGo to the ./material/data folder and create a new python/R notebook\nUse the sparkle icon on cell toolbar to show the inline chat popover.\nUse the following prompts to generate the required code:\n\nWrite python and R code to see the columns of the exergamewf.csv file.\nConvert the &lt;exergamewf_data&gt; into a data.table and create a long format table using the ‘iSubj’, ‘trial’, ‘Age’, ‘Decade’ and ‘older’ columns as keys.\nPlot a histogram in ggplot of the ‘value’ column of the &lt;exergamewf_long&gt; table."
+    "text": "exergamewt.csv into long format\n\nLaunch mybinder\nGo to the ./material/data folder and create a new python/R notebook\nUse the sparkle icon on cell toolbar to show the inline chat popover.\nUse the following prompts to generate the required code:\n\nWrite python and R code to see the columns of the exergamewf.csv file.\nConvert the &lt;exergamewf_data&gt; into a data.table and create a long format table using the ‘iSubj’, ‘trial’, ‘Age’, ‘Decade’ and ‘older’ columns as keys.\nPlot a histogram in ggplot of the ‘value’ column of the &lt;exergamewf_long&gt; table.",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#histogram",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#histogram",
     "title": "Data Visualization Techniques",
     "section": "Histogram",
-    "text": "Histogram"
+    "text": "Histogram",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#normalization",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#normalization",
     "title": "Data Visualization Techniques",
     "section": "Normalization",
-    "text": "Normalization\nStandard score:\n\\[x' = \\frac{x-\\mu}{\\sigma}\\]\nMin-Max Feature scaling:\n\\[x' = \\frac{x-min(x)}{max(x)-min(x)}\\]"
+    "text": "Normalization\nStandard score:\n\\[x' = \\frac{x-\\mu}{\\sigma}\\]\nMin-Max Feature scaling:\n\\[x' = \\frac{x-min(x)}{max(x)-min(x)}\\]",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#after-min-max-normalization",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#after-min-max-normalization",
     "title": "Data Visualization Techniques",
     "section": "After min max normalization",
-    "text": "After min max normalization"
+    "text": "After min max normalization",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#adding-a-distribution-curve",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#adding-a-distribution-curve",
     "title": "Data Visualization Techniques",
     "section": "Adding a distribution curve",
-    "text": "Adding a distribution curve"
+    "text": "Adding a distribution curve",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#overlapping-distributions",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#overlapping-distributions",
     "title": "Data Visualization Techniques",
     "section": "Overlapping distributions1",
-    "text": "Overlapping distributions1\n\n\n\n\n\n\n\n\n\nSource: FDV Histograms-densityplots, (Fig7_11.. .ipynb)"
+    "text": "Overlapping distributions1\n\n\n\n\n\n\n\n\n\nSource: FDV Histograms-densityplots, (Fig7_11.. .ipynb)",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#ridgeline-plot",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#ridgeline-plot",
     "title": "Data Visualization Techniques",
     "section": "Ridgeline plot1",
-    "text": "Ridgeline plot1\n\n\n\n\n\n\n\n\n\nSource: FDV Visualizing many distributions at once (Fig9_9... .ipynb)"
+    "text": "Ridgeline plot1\n\n\n\n\n\n\n\n\n\nSource: FDV Visualizing many distributions at once (Fig9_9... .ipynb)",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#meet-the-violin-plot",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#meet-the-violin-plot",
     "title": "Data Visualization Techniques",
     "section": "Meet the violin plot",
-    "text": "Meet the violin plot"
+    "text": "Meet the violin plot",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#packages-and-data",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#packages-and-data",
     "title": "Data Visualization Techniques",
     "section": "Packages and data",
-    "text": "Packages and data\n\n\n[1] \"/__w/DataVisMaterial/DataVisMaterial/material/slides/vis_slides\"\n\n\n\n# Importing the packages\nimport plotly.express as px\nimport pandas as pd\n# Loading and displaying the data\nlf = pd.read_csv('../../data/exergamelf2.csv')\nlf.head()\n\n   idrow  Age  Decade  iSubj  trial     myVars     value   normVal  older\n0      0   20       2     21      1  medLrms51  0.294961  0.879737  False\n1      1   20       2     21      2  medLrms51  0.308855  0.926365  False\n2      2   20       2     21      3  medLrms51  0.285579  0.848253  False\n3      3   20       2     21      4  medLrms51  0.264111  0.776211  False\n4      4   20       2     21      5  medLrms51  0.308285  0.924452  False"
+    "text": "Packages and data\n\n\n[1] \"/__w/DataVisMaterial/DataVisMaterial/material/slides/vis_slides\"\n\n\n\n# Importing the packages\nimport plotly.express as px\nimport pandas as pd\n# Loading and displaying the data\nlf = pd.read_csv('../../data/exergamelf2.csv')\nlf.head()\n\n   idrow  Age  Decade  iSubj  trial     myVars     value   normVal  older\n0      0   20       2     21      1  medLrms51  0.294961  0.879737  False\n1      1   20       2     21      2  medLrms51  0.308855  0.926365  False\n2      2   20       2     21      3  medLrms51  0.285579  0.848253  False\n3      3   20       2     21      4  medLrms51  0.264111  0.776211  False\n4      4   20       2     21      5  medLrms51  0.308285  0.924452  False",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#overlapping-violin-plots",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#overlapping-violin-plots",
     "title": "Data Visualization Techniques",
     "section": "Overlapping violin plots",
-    "text": "Overlapping violin plots\n\nplot = px.violin(x=lf['myVars'], y=lf['normVal'], color = lf[\"older\"])\nplot.show()"
+    "text": "Overlapping violin plots\n\nplot = px.violin(x=lf['myVars'], y=lf['normVal'], color = lf[\"older\"])\nplot.show()",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#preparing-for-publication",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#preparing-for-publication",
     "title": "Data Visualization Techniques",
     "section": "Preparing for publication",
-    "text": "Preparing for publication\n\nRemove unnecessary elements\n\nColor background\nAxis title\n\nSelect appropriate visual variables\n\ncolor\n\nAdd appropriate labels\nSave a high resolution image\nAvoid chart junk"
+    "text": "Preparing for publication\n\nRemove unnecessary elements\n\nColor background\nAxis title\n\nSelect appropriate visual variables\n\ncolor\n\nAdd appropriate labels\nSave a high resolution image\nAvoid chart junk",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#colorbrewer",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#colorbrewer",
     "title": "Data Visualization Techniques",
     "section": "Colorbrewer",
-    "text": "Colorbrewer\ncolorbrewer2.org"
+    "text": "Colorbrewer\ncolorbrewer2.org",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#high-quality-plots-with-latex",
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#high-quality-plots-with-latex",
     "title": "Data Visualization Techniques",
     "section": "High quality plots with LaTex",
-    "text": "High quality plots with LaTex\n\ntikz\ntikzDevice (only in R)\nscripts/FDV/Fig2_3_temperature_plot_tikz.ipynb\nUseful for publications\nMatch plot and main text fonts\nCan include complex mathematical formulae\ntikzDevice works with r magic in jupyter notebooks"
+    "text": "High quality plots with LaTex\n\ntikz\ntikzDevice (only in R)\nscripts/FDV/Fig2_3_temperature_plot_tikz.ipynb\nUseful for publications\nMatch plot and main text fonts\nCan include complex mathematical formulae\ntikzDevice works with r magic in jupyter notebooks",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
   },
   {
     "objectID": "material/slides/vis_slides/DataVis-05-Techniques02.html#welcome",
