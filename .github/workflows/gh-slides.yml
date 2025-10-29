@@ -81,10 +81,6 @@ jobs:
         run: |
           quarto render
 
-      - name: Inspect generated HTML for MathJax
-        run: |
-          grep -R "mathjax" _site/material/slides/vis_slides | head -n 10
-
       # Deploy to GitHub Pages
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
