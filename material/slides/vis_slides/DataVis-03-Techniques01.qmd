@@ -5,6 +5,7 @@ email: "v.soancatl.aguilar@rug.nl"
 format:
   revealjs:
     self-contained: true
+	math: mathjax
 ---
 
 ## Content {.smaller}
