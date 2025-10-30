@@ -194,7 +194,7 @@ p
 
 Standard score:
 
-\[x' = \frac{x-\mu}{\sigma}\]
+$$x' = \frac{x-\mu}{\sigma}$$
 
 Min-Max Feature scaling:
 
