@@ -44,7 +44,7 @@
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#exergamewt.csv-into-long-format",
     "title": "Data Visualization Techniques",
     "section": "exergamewt.csv into long format",
-    "text": "exergamewt.csv into long format\n\nLaunch mybinder\nGo to the ./material/data folder and create a new python/R notebook\nUse the sparkle icon on cell toolbar to show the inline chat popover.\nUse the following prompts to generate the required code:\n\nWrite python and R code to see the columns of the exergamewf.csv file.\nConvert the &lt;exergamewf_data&gt; into a data.table and create a long format table using the ‘iSubj’, ‘trial’, ‘Age’, ‘Decade’ and ‘older’ columns as keys.\nPlot a histogram in ggplot of the ‘value’ column of the &lt;exergamewf_long&gt; table.",
+    "text": "exergamewt.csv into long format\nUsing AI:\n\nLaunch mybinder\nGo to the ./material/data folder and create a new python/R notebook\nUse the sparkle icon on cell toolbar to show the inline chat popover.\nUse the following prompts to generate the required code:\n\nWrite python and R code to see the columns of the exergamewf.csv file.\nConvert the &lt;exergamewf_data&gt; into a data.table and create a long format table using the ‘iSubj’, ‘trial’, ‘Age’, ‘Decade’ and ‘older’ columns as keys.\nPlot a histogram in ggplot of the ‘value’ column of the &lt;exergamewf_long&gt; table.",
     "crumbs": [
       "Data Visualization Techniques"
     ]
@@ -120,11 +120,21 @@
     ]
   },
   {
-    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#packages-and-data",
-    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#packages-and-data",
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#a-practical-example",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#a-practical-example",
     "title": "Data Visualization Techniques",
-    "section": "Packages and data",
-    "text": "Packages and data\n\n\n[1] \"/__w/DataVisMaterial/DataVisMaterial/material/slides/vis_slides\"\n\n\n\n# Importing the packages\nimport plotly.express as px\nimport pandas as pd\n# Loading and displaying the data\nlf = pd.read_csv('../../data/exergamelf2.csv')\nlf.head()\n\n   idrow  Age  Decade  iSubj  trial     myVars     value   normVal  older\n0      0   20       2     21      1  medLrms51  0.294961  0.879737  False\n1      1   20       2     21      2  medLrms51  0.308855  0.926365  False\n2      2   20       2     21      3  medLrms51  0.285579  0.848253  False\n3      3   20       2     21      4  medLrms51  0.264111  0.776211  False\n4      4   20       2     21      5  medLrms51  0.308285  0.924452  False",
+    "section": "A practical example",
+    "text": "A practical example\nLoading the data:\n\n\n[1] \"/__w/DataVisMaterial/DataVisMaterial/material/slides/vis_slides\"\n\n\n\n# Importing the packages\nimport pandas as pd\n# Loading and displaying the data\nlf = pd.read_csv('../../data/exergamelf2.csv')\nlf.head()\n\n   idrow  Age  Decade  iSubj  trial     myVars     value   normVal  older\n0      0   20       2     21      1  medLrms51  0.294961  0.879737  False\n1      1   20       2     21      2  medLrms51  0.308855  0.926365  False\n2      2   20       2     21      3  medLrms51  0.285579  0.848253  False\n3      3   20       2     21      4  medLrms51  0.264111  0.776211  False\n4      4   20       2     21      5  medLrms51  0.308285  0.924452  False",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#creating-violin-plots",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#creating-violin-plots",
+    "title": "Data Visualization Techniques",
+    "section": "Creating violin plots",
+    "text": "Creating violin plots\n\nimport plotly.express as px\n\nplot = px.violin(x=lf['myVars'], \n                 y=lf['normVal']\n  )\n\nplot.show()",
     "crumbs": [
       "Data Visualization Techniques"
     ]
@@ -134,7 +144,17 @@
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#overlapping-violin-plots",
     "title": "Data Visualization Techniques",
     "section": "Overlapping violin plots",
-    "text": "Overlapping violin plots\n\nplot = px.violin(x=lf['myVars'], y=lf['normVal'], color = lf[\"older\"])\n# make violins overlap and improve visibility\nplot.update_traces(opacity=0.6, width=0.8)        # semi-transparent + narrower violins\n\n                                                    \n\nplot.update_layout(violinmode='overlay')          # overlay (instead of side-by-side)\n\n                                                    \n\n# optional: rotate x labels if long category names\nplot.update_layout(xaxis_tickangle=45)\n\n                                                    \n\nplot.show()",
+    "text": "Overlapping violin plots\n\nplot = px.violin(x=lf['myVars'], \n                 y=lf['normVal'], \n                 color = lf[\"older\"]\n                )\n\n# make violins overlap and improve visibility\nplot.update_traces(opacity=0.6, \n                   width=0.8\n                  )             # semi-transparent + narrower violins\n\nplot.update_layout(violinmode='overlay')  # overlay (instead of side-by-side)\n\n# optional: rotate x labels if long category names\nplot.update_layout(xaxis_tickangle=45)\n\nplot.show()",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#overlapping-violin-plots-1",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#overlapping-violin-plots-1",
+    "title": "Data Visualization Techniques",
+    "section": "Overlapping violin plots",
+    "text": "Overlapping violin plots",
     "crumbs": [
       "Data Visualization Techniques"
     ]
@@ -150,11 +170,11 @@
     ]
   },
   {
-    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#colorbrewer",
-    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#colorbrewer",
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#colors",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#colors",
     "title": "Data Visualization Techniques",
-    "section": "Colorbrewer",
-    "text": "Colorbrewer\ncolorbrewer2.org",
+    "section": "Colors",
+    "text": "Colors\ncolorbrewer2.org",
     "crumbs": [
       "Data Visualization Techniques"
     ]
@@ -170,21 +190,21 @@
     ]
   },
   {
-    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#a-ggplot-plot",
-    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#a-ggplot-plot",
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#the-ggplot-version",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#the-ggplot-version",
     "title": "Data Visualization Techniques",
-    "section": "A ggplot plot",
-    "text": "A ggplot plot\n\np &lt;- ggplot(long_dt, aes(x = variable, y = value_norm, fill = factor(older))) +\n  geom_violin(position = position_identity(),   # overlay violins at same x\n              alpha = 0.5, width = 0.8, trim = FALSE, color = NA) +\n# scale_y_continuous(limits = c(0, 1), expand = c(0, 0)) +\n  labs(title = \"Overlapping violins of per-variable normalized values\",\n       x = \"variable\",\n       y = \"value (normalized 0-1)\",\n       fill = \"older\",\n       color = \"older\") +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
+    "section": "The ggplot version",
+    "text": "The ggplot version\n\np &lt;- ggplot(long_dt, \n            aes(x = variable, \n                y = value_norm, \n                fill = factor(older)\n              )\n            ) +\n  geom_violin(position = position_identity(),   # overlay violins at same x\n              alpha = 0.5, \n              width = 0.8, \n              trim = FALSE, \n              color = NA\n              ) +\n  labs(title = \"Overlapping violins of per-variable normalized values\",\n       x = \"variable\",\n       y = \"value (normalized 0-1)\",\n       fill = \"older\",\n       color = \"older\") +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))",
     "crumbs": [
       "Data Visualization Techniques"
     ]
   },
   {
-    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#tikzdevice-code",
-    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#tikzdevice-code",
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#ggplot---latex",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#ggplot---latex",
     "title": "Data Visualization Techniques",
-    "section": "TikzDevice code",
-    "text": "TikzDevice code\n\nlibrary(tikzDevice)   # assume installed\n\n# 1) Write a standalone .tex that contains the TikZ picture\ntikz(\"p_plot.tex\", width = 6, height = 4, standAlone = TRUE)\nprint(p)   # print the ggplot object to the tikz device\ndev.off()\n\npng \n  2 \n\n# 2) Compile to PDF (requires a LaTeX engine available)\n# Option 1: via R's tools package (texi2pdf)\ntools::texi2dvi(\"p_plot.tex\", pdf = TRUE, clean = TRUE)",
+    "section": "ggplot -> LaTeX",
+    "text": "ggplot -&gt; LaTeX\n\nlibrary(tikzDevice)   # assume installed\n\n# 1) Write a standalone .tex that contains the TikZ picture\ntikz(\"p_plot.tex\", \n  width = 6, \n  height = 4, \n  standAlone = TRUE\n)\n\n  print(p)   # print the ggplot object to the tikz device\n\ndev.off()\n\npng \n  2 \n\n# 2) Compile to PDF (requires a LaTeX engine available)\n\ntools::texi2dvi(\"p_plot.tex\", pdf = TRUE, clean = TRUE)",
     "crumbs": [
       "Data Visualization Techniques"
     ]
@@ -195,6 +215,46 @@
     "title": "Data Visualization Techniques",
     "section": "TikzDevice result",
     "text": "TikzDevice result",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#published-result",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#published-result",
+    "title": "Data Visualization Techniques",
+    "section": "Published result1",
+    "text": "Published result1\n\nSource: 10.1371/journal.pone.0170906.g006",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#boxplots",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#boxplots",
+    "title": "Data Visualization Techniques",
+    "section": "Boxplots",
+    "text": "Boxplots\n\n\n\nplot = px.box(x=lf['myVars'], \n              y=lf['normVal'], \n              color = lf[\"older\"]\n            )\n\n\n\nMedian\nQuartiles 25% above and below the median\nWhiskers\nOutliers",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#would-it-be-better-to-use-boxplots",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#would-it-be-better-to-use-boxplots",
+    "title": "Data Visualization Techniques",
+    "section": "Would it be better to use boxplots?",
+    "text": "Would it be better to use boxplots?\n\n\n\nSource: https://doi.org/10.1371/journal.pone.0170906.g004",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-03-Techniques01.html#end",
+    "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#end",
+    "title": "Data Visualization Techniques",
+    "section": "END",
+    "text": "END",
     "crumbs": [
       "Data Visualization Techniques"
     ]
