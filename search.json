@@ -64,7 +64,7 @@
     "href": "material/slides/vis_slides/DataVis-03-Techniques01.html#normalization",
     "title": "Data Visualization Techniques",
     "section": "Normalization",
-    "text": "Normalization\nStandard score:\n\\[x' = \\frac{x-\\mu}{\\sigma}\\]\nMin-Max Feature scaling:\n\\[x' = \\frac{x-min(x)}{max(x)-min(x)}\\]",
+    "text": "Normalization\nStandard score:\n[x’ = ]\nMin-Max Feature scaling:\n\\[x' = \\frac{x-min(x)}{max(x)-min(x)}\\]",
     "crumbs": [
       "Data Visualization Techniques"
     ]
