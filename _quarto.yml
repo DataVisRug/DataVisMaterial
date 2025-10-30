@@ -10,7 +10,6 @@ format:
   revealjs:
     math: mathjax
     include-in-header:
-      - file: header.html
       - text: |
           <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
       - text: |
