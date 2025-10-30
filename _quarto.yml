@@ -14,6 +14,7 @@ format:
           <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
       - text: |
           <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/math/math.js"></script>
+      - file: header.html
 
 website:
   sidebar:
