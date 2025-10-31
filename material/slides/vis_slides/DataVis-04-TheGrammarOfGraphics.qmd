@@ -1,0 +1,135 @@
+---
+title: "Data Visualization Techniques"
+author: "Venustiano Soancatl Aguilar"
+email: "v.soancatl.aguilar@rug.nl"
+format:
+  revealjs:
+    self-contained: true
+---
+
+## Content
+
+- The grammar of graphics
+- The major components of layers
+- Hands on practice
+- Visualizations based on the gg approach
+
+---
+
+## The grammar of graphics
+
+<br>
+`The grammar of graphics is about grammatical rules for creating perceivable graphs, or what we call graphics`. (Leland Wilkinson, 2005).  
+<br><br>
+Take the analogy: `good grammar is just the first step in creating a good sentence`.
+
+## An Object-Oriented Graphics System {.smaller}
+
+1. Specification
+    a. `DATA` : a set of data operations that create variables from datasets,
+    b. `TRANS` : variable transformations (e.g., rank),
+    c. `SCALE` : scale transformations (e.g., log),
+    d. `COORD` : a coordinate system (e.g., polar),
+    e. `ELEMENT` : graphs (e.g., points) and their aesthetic attributes (e.g., color),
+    f. `GUIDE` : one or more guides (axes, legends, etc.).
+2. Assembly
+3. Display
+
+---
+
+## Graphics Pipeline {.smaller}
+
+![](https://pyg2.readthedocs.io/en/latest/_images/pipeline.png){style="margin:0; padding:0; display:block;" width="800px"}
+
+- `Algebra`, the operations that allow us to combine variables and specify dimensions of graphs.
+- `Scales` involves the representation of variables on measured dimensions.
+- `Statistics` covers the functions that allow graphs to change their appearance and representation schemes.
+- `Geometry` covers the creation of geometric graphs from variables.
+
+::: aside
+From The Grammar of Graphics of Leland Wilkinson.
+:::
+
+---
+
+## A layered grammar of graphics {.smaller}
+
+![](https://miro.medium.com/v2/resize:fit:640/format:webp/1*2X-8H_R2kKWBY1no1p8pYA.png){fig-align="center" width="400px"}
+
+::: aside
+Hadley Wickham (2010)
+:::
+
+## Layers of the grammar of graphics
+
+<br>
+![](https://blog.gramener.com/wp-content/uploads/2018/11/7-layers-of-grammar-of-graphics-to-tell-powerful-data-stories-3.png)
+
+::: aside
+Source: [Grammar of Graphics: Data Stories](https://blog.gramener.com/grammar-of-graphics-data-stories/)
+:::
+
+## A layer is composed of
+
+- a geometric object
+- a statistical transformation
+- a position adjustment
+- a dataset which can be inherited from the parent layer, and
+- aesthetic mappings
+
+---
+
+### Aestetic mappings
+
+![](https://www.rforecology.com/ggplot2_image2.png){fig-align="center" width="800px"}
+
+::: aside
+Source: [A *simple* introduction to ggplot2 ](https://www.rforecology.com/post/a-simple-introduction-to-ggplot2/)
+:::
+
+---
+
+### Geometric object
+
+![](https://www.rforecology.com/ggplot2_image3.png)
+
+::: aside
+Source: [A *simple* introduction to ggplot2 ](https://www.rforecology.com/post/a-simple-introduction-to-ggplot2/)
+:::
+
+---
+## 
+
+```{r}
+#| echo: true
+library(dviz.supp)
+library(forcats)
+library(lubridate)
+
+if (!requireNamespace("gt")) install.packages("gt")
+library(gt)
+```
+
+```{r}
+temps_long <- filter(ncdc_normals,
+                station_id %in% c(
+                  "USW00014819", # Chicago, IL 60638
+                  #"USC00516128", # Honolulu, HI 96813
+                  #"USW00027502", # Barrow, AK 99723, coldest point in the US
+                  "USC00042319", # Death Valley, CA 92328 hottest point in the US
+                  "USW00093107", # San Diego, CA 92145
+                  #"USC00427606"  # Salt Lake City, UT 84103
+                  "USW00012918" # Houston, TX 77061
+                )) %>%
+  mutate(location = fct_recode(factor(station_id),
+                               "Chicago" = "USW00014819",
+                               #"Honolulu, HI" = "USC00516128",
+                               #"Barrow, AK" = "USW00027502",
+                               "Death Valley" = "USC00042319",
+                               "San Diego" = "USW00093107",
+                               #"Salt Lake City, UT" = "USC00427606",
+                               "Houston" = "USW00012918")) %>%
+  mutate(location = factor(location, levels = c("Death Valley", "Houston", "San Diego", "Chicago")))
+
+head(temps_long) |> gt()
+```
