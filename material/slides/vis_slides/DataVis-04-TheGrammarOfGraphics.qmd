@@ -518,7 +518,7 @@ stat_table |>
 
 ## Contours
 
-`Blue jay` relationship between body mass and head length.
+Plot the `blue jay` relationship between body mass and head length.
 
 <br>
 
@@ -530,6 +530,8 @@ head(blue_jays) |> gt() %>%
   ) %>% 
   cols_align(align = "center") 
 ```
+
+---
 
 ## Contour plot, first version
 
@@ -564,10 +566,13 @@ blue_jays_base +
 
 ---
 
+### Apply some shading
+
+
 ```{r}
 #| echo: true
+#| out-width: "80%"
 
-# Shading
 blue_jays_base + 
   stat_density_2d(aes(fill = ..level..), geom = "polygon", color = "black", size = 0.15, binwidth = 0.004) +
   geom_point(color = "black", size = 1.5, alpha = .4) +
@@ -671,7 +676,7 @@ Dataset contains **221,592,952 rows × 6 columns**.
 
 ---
 
-## Response {.smaller}
+## AI Response {.smaller}
 
 To aggregate such a large Pandas DataFrame for creating a heatmap, you can use binning and grouping techniques to reduce the data into manageable chunks. Here's a general approach to achieve this:
 
@@ -701,7 +706,168 @@ plt.show()
 
 ![](./images/mz_vs_time_vs_intensity_heatmap.png)
 
+---
 
 ## 4. Position adjustment
 
+## Position Adjustments in `ggplot2`
 
+```{r}
+library(gt)
+
+# Create the data
+positions <- data.frame(
+  Position = c("identity", "stack", "fill", "dodge", "jitter", "nudge"),
+  Description = c(
+    "No adjustment — geoms are placed exactly where data specifies.",
+    "Stacks elements vertically along the y-axis.",
+    "Like 'stack', but scales bars to show proportions (fills to 100%).",
+    "Places overlapping objects side-by-side for comparison.",
+    "Adds small random variation to reduce overplotting.",
+    "Moves text or labels slightly to improve readability."
+  ),
+  Commonly_Used_With = c(
+    "geom_point(), geom_bar()",
+    "geom_bar(), geom_area()",
+    "geom_bar(), geom_area()",
+    "geom_bar(), geom_boxplot()",
+    "geom_point()",
+    "geom_text(), geom_label()"
+  )
+)
+
+# Build the improved table
+positions %>%
+  gt() %>%
+  tab_header(
+    title = md("**Position Adjustments in ggplot2**")
+  ) %>%
+  cols_label(
+    Position = md("**Position**"),
+    Description = md("**Description**"),
+    Commonly_Used_With = md("**Commonly Used With**")
+  ) %>%
+  # cols_width(
+  #   Position ~ px(12),
+  #   Description ~ px(62),
+  #   Commonly_Used_With ~ px(26)
+  # ) %>%
+  opt_table_font(size = 22) %>%     # Larger, presentation-friendly font
+  tab_style(
+    style = cell_text(
+      font = google_font("Fira Code"),
+      weight = "bold",
+      color = "#444444"
+    ),
+    locations = cells_body(columns = "Position")
+  ) %>%
+    tab_style(
+    style = cell_text(
+      font = google_font("Fira Code"),
+      color = "#444444"
+    ),
+    locations = cells_body(columns = "Commonly_Used_With")
+  ) %>%
+  tab_options(
+    table.width = pct(100),
+    # column_labels.font.weight = "bold",
+    # data_row.padding = px(10),      # More vertical spacing between rows
+    # table.font.names = c("industrial", "monospace-code", "serif")
+  )
+```
+
+---
+
+### Position dodge
+
+```{python}
+import plotly.express as px
+
+import pandas as pd
+# Loading and displaying the data
+lf = pd.read_csv('../../data/exergamelf2.csv')
+
+plot = px.box(x=lf['myVars'], 
+                  y=lf['normVal'], 
+                  color = lf["older"]
+                  )
+# plot.update_traces(opacity=0.6, width=0.8);
+# plot.update_layout(
+#     xaxis_tickangle=45
+# );
+
+plot.show()
+```
+
+---
+
+## Using jitter to deal with occlusion
+
+```{r}
+p_mpg_solid <- ggplot(mpg, aes(y = cty, x = displ, color = drv, fill = drv)) +
+  geom_point(size = 3, shape = 21) + 
+  ylab("fuel economy (mpg)") +
+  xlab("displacement (l)") +
+  scale_color_manual(values=c("#202020", "#E69F00", "#56B4E9"), 
+                     name="drive train",
+                     breaks=c("f", "r", "4"),
+                     labels=c("FWD", "RWD", "4WD")) +
+  scale_fill_manual(values=c("#202020", "#E69F00", "#56B4E9"), 
+                     name="drive train",
+                     breaks=c("f", "r", "4"),
+                     labels=c("FWD", "RWD", "4WD")) +
+  theme_dviz_open() +
+  theme(legend.position = c(.7, .8),
+        plot.margin = margin(3, 7, 3, 1.5))
+
+stamp_bad(p_mpg_solid)
+```
+
+---
+
+## Partial transparency
+
+```{r}
+p_mpg_transp <- ggplot(mpg, aes(y = cty, x = displ, color = drv, fill = drv)) +
+  geom_point(size = 3, shape = 21,alpha=0.4) + 
+  ylab("fuel economy (mpg)") +
+  xlab("displacement (l)") +
+  scale_color_manual(values=c("#202020", "#E69F00", "#56B4E9"), 
+                     name="drive train",
+                     breaks=c("f", "r", "4"),
+                     labels=c("FWD", "RWD", "4WD")) +
+  scale_fill_manual(values=c("#20202080", "#E69F0080", "#56B4E980"), 
+                     name="drive train",
+                     breaks=c("f", "r", "4"),
+                     labels=c("FWD", "RWD", "4WD")) +
+  theme_dviz_open() +
+  theme(legend.position = c(.7, .8),
+        plot.margin = margin(3, 7, 3, 1.5))
+
+p_mpg_transp
+```
+
+## Jitter
+
+```{r}
+p_mpg_jitter <- ggplot(mpg, aes(y = cty, x = displ, color = drv, fill = drv)) +
+  geom_point(size = 3, shape = 21,
+             position = position_jitter(width = 0.01 * diff(range(mpg$displ)),
+                                        height = 0.01 * diff(range(mpg$cty)),
+                                        seed = 7384)) + 
+  ylab("fuel economy (mpg)") +
+  xlab("displacement (l)") +
+  scale_color_manual(values=c("#202020", "#E69F00", "#56B4E9"), 
+                     name="drive train",
+                     breaks=c("f", "r", "4"),
+                     labels=c("FWD", "RWD", "4WD")) +
+  scale_fill_manual(values=c("#20202080", "#E69F0080", "#56B4E980"), 
+                     name="drive train",
+                     breaks=c("f", "r", "4"),
+                     labels=c("FWD", "RWD", "4WD")) +
+  theme_dviz_open() +
+  theme(legend.position = c(.7, .8),
+        plot.margin = margin(3, 7, 3, 1.5))
+
+p_mpg_jitter
+```
