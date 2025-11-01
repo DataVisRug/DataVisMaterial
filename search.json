@@ -384,7 +384,7 @@
     "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#aesthetics-mapping-in-practice",
     "title": "Data Visualization Techniques",
     "section": "Aesthetics mapping in practice",
-    "text": "Aesthetics mapping in practice\n\nlibrary(dviz.supp)\nlibrary(forcats)\nlibrary(lubridate)\n\nif (!requireNamespace(\"gt\")) install.packages(\"gt\")\nlibrary(gt)\n\n\n\n\n\n\n\n\n\nDaily temprature data\n\n\nstation_id\nmonth\nday\ntemperature\nflag\ndate\nlocation\n\n\n\n\nUSC00042319\n01\n1\n51.0\nS\n0-01-01\nDeath Valley\n\n\nUSC00042319\n01\n2\n51.2\nS\n0-01-02\nDeath Valley\n\n\nUSC00042319\n01\n3\n51.3\nS\n0-01-03\nDeath Valley\n\n\nUSC00042319\n01\n4\n51.4\nS\n0-01-04\nDeath Valley\n\n\nUSC00042319\n01\n5\n51.6\nS\n0-01-05\nDeath Valley\n\n\nUSC00042319\n01\n6\n51.7\nS\n0-01-06\nDeath Valley\n\n\n\n\n\n\n\n\n\nSource: Fundamentals of Data Visualization",
+    "text": "Aesthetics mapping in practice\n\nlibrary(dviz.supp)\nlibrary(forcats)\nlibrary(lubridate)\n\nif (!requireNamespace(\"gt\")) install.packages(\"gt\")\nlibrary(gt)\n\n\n\n\n\n\n\n\n\nDaily temperature data\n\n\nstation_id\nmonth\nday\ntemperature\nflag\ndate\nlocation\n\n\n\n\nUSC00042319\n01\n1\n51.0\nS\n0-01-01\nDeath Valley\n\n\nUSC00042319\n01\n2\n51.2\nS\n0-01-02\nDeath Valley\n\n\nUSC00042319\n01\n3\n51.3\nS\n0-01-03\nDeath Valley\n\n\nUSC00042319\n01\n4\n51.4\nS\n0-01-04\nDeath Valley\n\n\nUSC00042319\n01\n5\n51.6\nS\n0-01-05\nDeath Valley\n\n\nUSC00042319\n01\n6\n51.7\nS\n0-01-06\nDeath Valley\n\n\n\n\n\n\n\n\n\nSource: Fundamentals of Data Visualization",
     "crumbs": [
       "Data Visualization Techniques"
     ]
@@ -454,7 +454,7 @@
     "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#contours",
     "title": "Data Visualization Techniques",
     "section": "Contours",
-    "text": "Contours\nBlue jay relationship between body mass and head length.\n\n\n\n\n\n\n\n\n\nBlue jay dataset\n\n\nBirdID\nKnownSex\nBillDepth\nBillWidth\nBillLength\nHead\nMass\nSkull\nSex\n\n\n\n\n0000-00000\nM\n8.26\n9.21\n25.92\n56.58\n73.30\n30.66\n1\n\n\n1142-05901\nM\n8.54\n8.76\n24.99\n56.36\n75.10\n31.38\n1\n\n\n1142-05905\nM\n8.39\n8.78\n26.07\n57.32\n70.25\n31.25\n1\n\n\n1142-05907\nF\n7.78\n9.30\n23.48\n53.77\n65.50\n30.29\n0\n\n\n1142-05909\nM\n8.71\n9.84\n25.47\n57.32\n74.90\n31.85\n1\n\n\n1142-05911\nF\n7.28\n9.30\n22.25\n52.25\n63.90\n30.00\n0",
+    "text": "Contours\nPlot the blue jay relationship between body mass and head length.\n\n\n\n\n\n\n\n\n\nBlue jay dataset\n\n\nBirdID\nKnownSex\nBillDepth\nBillWidth\nBillLength\nHead\nMass\nSkull\nSex\n\n\n\n\n0000-00000\nM\n8.26\n9.21\n25.92\n56.58\n73.30\n30.66\n1\n\n\n1142-05901\nM\n8.54\n8.76\n24.99\n56.36\n75.10\n31.38\n1\n\n\n1142-05905\nM\n8.39\n8.78\n26.07\n57.32\n70.25\n31.25\n1\n\n\n1142-05907\nF\n7.78\n9.30\n23.48\n53.77\n65.50\n30.29\n0\n\n\n1142-05909\nM\n8.71\n9.84\n25.47\n57.32\n74.90\n31.85\n1\n\n\n1142-05911\nF\n7.28\n9.30\n22.25\n52.25\n63.90\n30.00\n0",
     "crumbs": [
       "Data Visualization Techniques"
     ]
@@ -494,7 +494,27 @@
     "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#mass-spectrometry",
     "title": "Data Visualization Techniques",
     "section": "Mass spectrometry",
-    "text": "Mass spectrometry\nPrompt: Given a pandas dataframes with more than 200 million rows and an 'mz' column having more thatn 26 million unique values. How can the table be aggregated in such a way that we can create a heat mpa wint 'mz' on the vertical axis, time on the horizontal axis and intensity on the 'z' axis (color)?",
+    "text": "Mass spectrometry\n\n\nPrompt: Given a pandas dataframes with more than 200 million rows and an 'mz' column having more than 26 million unique values. How can the table be aggregated in such a way that we can create a heat map wint 'mz' on the vertical axis, time on the horizontal axis and intensity on the 'z' axis (color)?\n\n\n\n\nId\nTime\nscanid\nindex\nintensity\nmz\n\n\n\n\n1\n0.312346\n35\n376857\n9\n1548.487069\n\n\n1\n0.312346\n38\n2796\n9\n99.330436\n\n\n1\n0.312346\n38\n274380\n9\n979.736426\n\n\n1\n0.312346\n38\n313091\n9\n1179.351225\n\n\n1\n0.312346\n39\n322655\n9\n1231.517479\n\n\n…\n…\n…\n…\n…\n…\n\n\n6481\n691.492002\n916\n55969\n86\n200.037732\n\n\n6481\n691.492002\n916\n74584\n138\n243.540075\n\n\n6481\n691.492002\n916\n92301\n62\n288.915998\n\n\n6481\n691.492002\n916\n218889\n53\n725.852351\n\n\n6481\n691.492002\n917\n215210\n99\n710.363398\n\n\n\n\n\n\nNote:\nData excerpt from a mass spectrometry file.\nDataset contains 221,592,952 rows × 6 columns.",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#ai-response",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#ai-response",
+    "title": "Data Visualization Techniques",
+    "section": "AI Response",
+    "text": "AI Response\nTo aggregate such a large Pandas DataFrame for creating a heatmap, you can use binning and grouping techniques to reduce the data into manageable chunks. Here’s a general approach to achieve this:\n\n# Step 1: Downsample or aggregate the data if necessary to avoid memory issues\n# Step 2: Create a pivot table (heatmap structure) by aggregating intensity\nheatmap_data = super_df.pivot_table(index=pd.cut(super_df['mz'], bins=mz_bins), \n                              columns=pd.cut(super_df['Time'], bins=time_bins), \n                              values='intensity', \n                              aggfunc='mean')  # You can change 'mean' to 'sum' if appropriate\n\n# Step 3: Apply a logarithmic transformation to highlight minority values\n# Step 4: Plot the heatmap\nplt.figure(figsize=(17, 10))  # Adjust figure size as needed\nsns.heatmap(heatmap_data_log, cmap='magma', norm=None,cbar_kws={'label': 'Log(Intensity)'})  \n# 'magma' gives more emphasis on high values\n\n# Step 6: Show the plot\nplt.show()",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#result",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#result",
+    "title": "Data Visualization Techniques",
+    "section": "Result",
+    "text": "Result",
     "crumbs": [
       "Data Visualization Techniques"
     ]
@@ -505,6 +525,46 @@
     "title": "Data Visualization Techniques",
     "section": "4. Position adjustment",
     "text": "4. Position adjustment",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#position-adjustments-in-ggplot2",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#position-adjustments-in-ggplot2",
+    "title": "Data Visualization Techniques",
+    "section": "Position Adjustments in ggplot2",
+    "text": "Position Adjustments in ggplot2\n\n\n\n\n\n\n\n\nPosition Adjustments in ggplot2\n\n\nPosition\nDescription\nCommonly Used With\n\n\n\n\nidentity\nNo adjustment — geoms are placed exactly where data specifies.\ngeom_point(), geom_bar()\n\n\nstack\nStacks elements vertically along the y-axis.\ngeom_bar(), geom_area()\n\n\nfill\nLike 'stack', but scales bars to show proportions (fills to 100%).\ngeom_bar(), geom_area()\n\n\ndodge\nPlaces overlapping objects side-by-side for comparison.\ngeom_bar(), geom_boxplot()\n\n\njitter\nAdds small random variation to reduce overplotting.\ngeom_point()\n\n\nnudge\nMoves text or labels slightly to improve readability.\ngeom_text(), geom_label()",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#using-jitter-to-deal-with-occlusion",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#using-jitter-to-deal-with-occlusion",
+    "title": "Data Visualization Techniques",
+    "section": "Using jitter to deal with occlusion",
+    "text": "Using jitter to deal with occlusion",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#partial-transparency",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#partial-transparency",
+    "title": "Data Visualization Techniques",
+    "section": "Partial transparency",
+    "text": "Partial transparency",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#jitter",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#jitter",
+    "title": "Data Visualization Techniques",
+    "section": "Jitter",
+    "text": "Jitter",
     "crumbs": [
       "Data Visualization Techniques"
     ]
