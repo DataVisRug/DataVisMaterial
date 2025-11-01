@@ -260,6 +260,333 @@
     ]
   },
   {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#content",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#content",
+    "title": "Data Visualization Techniques",
+    "section": "Content",
+    "text": "Content\n\nThe grammar of graphics\nThe major components of layers\nHands on practice\nVisualizations based on the gg approach",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#the-grammar-of-graphics",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#the-grammar-of-graphics",
+    "title": "Data Visualization Techniques",
+    "section": "The grammar of graphics",
+    "text": "The grammar of graphics\n The grammar of graphics is about grammatical rules for creating perceivable graphs, or what we call graphics. (Leland Wilkinson, 2005).\n Take the analogy: good grammar is just the first step in creating a good sentence.",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#an-object-oriented-graphics-system",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#an-object-oriented-graphics-system",
+    "title": "Data Visualization Techniques",
+    "section": "An Object-Oriented Graphics System",
+    "text": "An Object-Oriented Graphics System\n\nSpecification\n\nDATA : a set of data operations that create variables from datasets,\nTRANS : variable transformations (e.g., rank),\nSCALE : scale transformations (e.g., log),\nCOORD : a coordinate system (e.g., polar),\nELEMENT : graphs (e.g., points) and their aesthetic attributes (e.g., color),\nGUIDE : one or more guides (axes, legends, etc.).\n\nAssembly\nDisplay",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#graphics-pipeline",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#graphics-pipeline",
+    "title": "Data Visualization Techniques",
+    "section": "Graphics Pipeline",
+    "text": "Graphics Pipeline\n\n\nAlgebra, the operations that allow us to combine variables and specify dimensions of graphs.\nScales involves the representation of variables on measured dimensions.\nStatistics covers the functions that allow graphs to change their appearance and representation schemes.\nGeometry covers the creation of geometric graphs from variables.\n\n\n\nFrom The Grammar of Graphics of Leland Wilkinson.",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#a-layered-grammar-of-graphics",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#a-layered-grammar-of-graphics",
+    "title": "Data Visualization Techniques",
+    "section": "A layered grammar of graphics",
+    "text": "A layered grammar of graphics\n\n\n\n\n\n\n\nHadley Wickham (2010)",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#layers-of-the-grammar-of-graphics",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#layers-of-the-grammar-of-graphics",
+    "title": "Data Visualization Techniques",
+    "section": "Layers of the grammar of graphics",
+    "text": "Layers of the grammar of graphics\n \n\n\nSource: Grammar of Graphics: Data Stories",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#a-layer-is-composed-of",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#a-layer-is-composed-of",
+    "title": "Data Visualization Techniques",
+    "section": "A layer is composed of",
+    "text": "A layer is composed of\n\ndata and aesthetic mappings\na geometric object\na statistical transformation\na position adjustment",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#data-and-aesthetic-mapping",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#data-and-aesthetic-mapping",
+    "title": "Data Visualization Techniques",
+    "section": "1. Data and aesthetic mapping",
+    "text": "1. Data and aesthetic mapping",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#aestetic-mappings",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#aestetic-mappings",
+    "title": "Data Visualization Techniques",
+    "section": "Aestetic mappings",
+    "text": "Aestetic mappings\n\n\n\n\n\n\n\nSource: A simple introduction to ggplot2",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#geometric-objects",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#geometric-objects",
+    "title": "Data Visualization Techniques",
+    "section": "2. Geometric objects",
+    "text": "2. Geometric objects",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#geometric-object",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#geometric-object",
+    "title": "Data Visualization Techniques",
+    "section": "Geometric object",
+    "text": "Geometric object\n\n\n\nSource: A simple introduction to ggplot2",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#a-sample-of-geometric-objects",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#a-sample-of-geometric-objects",
+    "title": "Data Visualization Techniques",
+    "section": "A sample of geometric objects",
+    "text": "A sample of geometric objects\n\n\nGraphical primitives\n\ngeom_path()\ngeom_rect()\ngeom_poligon()\n\nOne variable\n\nDiscrete\n\ngeom_bar()\n\nContinuous\n\ngeom_histogram()\ngeom_density()\n\n\n\nTwo variables\n\nBoth continuous\n\ngeom_smooth()\ngeom_point()\n\nAt least one discrete\n\ngeom_count()\ngeom_jitter()\n\nOne continuous one discrete\n\ngeom_boxplot().\ngeom_violin()\n\n\n\nThree variables\n\ngeom_contour()\ngeom_tile()\ngeom_raster()\n\n\n\n\nSource: ggplot2: Elegant Graphics for Data Analysis (3e)",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#aesthetics-mapping-in-practice",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#aesthetics-mapping-in-practice",
+    "title": "Data Visualization Techniques",
+    "section": "Aesthetics mapping in practice",
+    "text": "Aesthetics mapping in practice\n\nlibrary(dviz.supp)\nlibrary(forcats)\nlibrary(lubridate)\n\nif (!requireNamespace(\"gt\")) install.packages(\"gt\")\nlibrary(gt)\n\n\n\n\n\n\n\n\n\nDaily temprature data\n\n\nstation_id\nmonth\nday\ntemperature\nflag\ndate\nlocation\n\n\n\n\nUSC00042319\n01\n1\n51.0\nS\n0-01-01\nDeath Valley\n\n\nUSC00042319\n01\n2\n51.2\nS\n0-01-02\nDeath Valley\n\n\nUSC00042319\n01\n3\n51.3\nS\n0-01-03\nDeath Valley\n\n\nUSC00042319\n01\n4\n51.4\nS\n0-01-04\nDeath Valley\n\n\nUSC00042319\n01\n5\n51.6\nS\n0-01-05\nDeath Valley\n\n\nUSC00042319\n01\n6\n51.7\nS\n0-01-06\nDeath Valley\n\n\n\n\n\n\n\n\n\nSource: Fundamentals of Data Visualization",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#mapping-and-geometry",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#mapping-and-geometry",
+    "title": "Data Visualization Techniques",
+    "section": "Mapping and geometry",
+    "text": "Mapping and geometry\np &lt;- ggplot(temps_long, \n            aes(x = date, \n                y = temperature, \n                color = location)\n            ) +\n  geom_line(linewidth = 1) +\n  scale_x_date(name = \"month\", \n               limits = c(ymd(\"0000-01-01\"), ymd(\"0001-01-04\")),\n               breaks = c(ymd(\"0000-01-01\"), ymd(\"0000-04-01\"), ymd(\"0000-07-01\"),\n                          ymd(\"0000-10-01\"), ymd(\"0001-01-01\")),\n               labels = c(\"Jan\", \"Apr\", \"Jul\", \"Oct\", \"Jan\"), expand = c(1/366, 0)) + \n  scale_y_continuous(limits = c(19.9, 107),\n                     breaks = seq(20, 100, by = 20),\n                     name = \"temperature (°F)\") +\n  scale_color_OkabeIto(order = c(1:3, 7), name = NULL) +\n  theme_dviz_grid() +\n  theme(legend.title.align = 0.5)\n\n\nCode: Fig2_3_temperature_plot.ipynb",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#temperature-plot",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#temperature-plot",
+    "title": "Data Visualization Techniques",
+    "section": "Temperature plot",
+    "text": "Temperature plot",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#temperature-plot-using-seaborn",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#temperature-plot-using-seaborn",
+    "title": "Data Visualization Techniques",
+    "section": "Temperature plot using Seaborn",
+    "text": "Temperature plot using Seaborn\n\n\n(np.float64(10957.0), np.float64(11326.0))\n\n\n(19.9, 107.0)",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#changing-the-geometry-to-heatmap",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#changing-the-geometry-to-heatmap",
+    "title": "Data Visualization Techniques",
+    "section": "Changing the geometry to heatmap",
+    "text": "Changing the geometry to heatmap\nPreprocessing:\n\nCompute mean by location & month\nReplace month numbers with names\n\n\n\n\n\n\n\n\n\nMean temperature per month\n\n\nlocation\nmonth\nmean\n\n\n\n\nDeath Valley\nJan\n53.45161\n\n\nDeath Valley\nFeb\n59.94483\n\n\nDeath Valley\nMar\n68.44839\n\n\nDeath Valley\nApr\n76.29333\n\n\nDeath Valley\nMay\n86.60645\n\n\nDeath Valley\nJun\n95.54667",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#aesthetics-mapping-and-geometry",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#aesthetics-mapping-and-geometry",
+    "title": "Data Visualization Techniques",
+    "section": "Aesthetics mapping and geometry",
+    "text": "Aesthetics mapping and geometry\np &lt;- ggplot(mean_temps, \n            aes(x = month, y = location, fill = mean)) + \n     geom_tile(width = .95, height = 0.95) +\n     scale_fill_viridis_c(option = \"B\", begin = 0.15, end = 0.98,\n                       name = \"temperature (°F)\") + \n     scale_y_discrete(name = NULL) +\n     ...",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#statistical-transformations",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#statistical-transformations",
+    "title": "Data Visualization Techniques",
+    "section": "3. Statistical transformations",
+    "text": "3. Statistical transformations",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#contours",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#contours",
+    "title": "Data Visualization Techniques",
+    "section": "Contours",
+    "text": "Contours\nBlue jay relationship between body mass and head length.\n\n\n\n\n\n\n\n\n\nBlue jay dataset\n\n\nBirdID\nKnownSex\nBillDepth\nBillWidth\nBillLength\nHead\nMass\nSkull\nSex\n\n\n\n\n0000-00000\nM\n8.26\n9.21\n25.92\n56.58\n73.30\n30.66\n1\n\n\n1142-05901\nM\n8.54\n8.76\n24.99\n56.36\n75.10\n31.38\n1\n\n\n1142-05905\nM\n8.39\n8.78\n26.07\n57.32\n70.25\n31.25\n1\n\n\n1142-05907\nF\n7.78\n9.30\n23.48\n53.77\n65.50\n30.29\n0\n\n\n1142-05909\nM\n8.71\n9.84\n25.47\n57.32\n74.90\n31.85\n1\n\n\n1142-05911\nF\n7.28\n9.30\n22.25\n52.25\n63.90\n30.00\n0",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#contour-plot-first-version",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#contour-plot-first-version",
+    "title": "Data Visualization Techniques",
+    "section": "Contour plot, first version",
+    "text": "Contour plot, first version\nblue_jays_base &lt;- ggplot(blue_jays, aes(Mass, Head)) + \n  scale_x_continuous(limits = c(57, 82), expand = c(0, 0), name = \"body mass (g)\") +\n  scale_y_continuous(limits = c(49, 61), expand = c(0, 0), name = \"head length (mm)\" ) +\n  theme_dviz_grid()\n\nblue_jays_base + \n  stat_density_2d(color = \"black\", size = 0.4, binwidth = 0.004) +\n  geom_point(color = \"black\", size = 1.5, alpha = 1/3)",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#grouping-by-sex",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#grouping-by-sex",
+    "title": "Data Visualization Techniques",
+    "section": "Grouping by sex",
+    "text": "Grouping by sex\nblue_jays_base + \n  aes(color = KnownSex) +\n  stat_density_2d(size = 0.4, binwidth = 0.006) +\n  geom_point(size = 1.5, alpha = 0.7) +\n  ...",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#bins",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#bins",
+    "title": "Data Visualization Techniques",
+    "section": "Bins",
+    "text": "Bins\nCommon applications:\n\nHistograms\nContours\nHeatmaps, aggregate values into grid cells to display intensity across two dimensions\nTemporal aggregation\nLarge-data intensity approximation",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#mass-spectrometry",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#mass-spectrometry",
+    "title": "Data Visualization Techniques",
+    "section": "Mass spectrometry",
+    "text": "Mass spectrometry\nPrompt: Given a pandas dataframes with more than 200 million rows and an 'mz' column having more thatn 26 million unique values. How can the table be aggregated in such a way that we can create a heat mpa wint 'mz' on the vertical axis, time on the horizontal axis and intensity on the 'z' axis (color)?",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#position-adjustment",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#position-adjustment",
+    "title": "Data Visualization Techniques",
+    "section": "4. Position adjustment",
+    "text": "4. Position adjustment",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/scripts/exergame/exergame_boxplots.html#data",
+    "href": "material/scripts/exergame/exergame_boxplots.html#data",
+    "title": "Libraries",
+    "section": "Data",
+    "text": "Data\n\n\n\n\n\n\n\n\n\nidrow\nAge\nDecade\niSubj\ntrial\nmyVars\nvalue\nnormVal\nolder\n\n\n\n\n0\n0\n20\n2\n21\n1\nmedLrms51\n0.294961\n0.879737\nFalse\n\n\n1\n1\n20\n2\n21\n2\nmedLrms51\n0.308855\n0.926365\nFalse\n\n\n2\n2\n20\n2\n21\n3\nmedLrms51\n0.285579\n0.848253\nFalse\n\n\n3\n3\n20\n2\n21\n4\nmedLrms51\n0.264111\n0.776211\nFalse\n\n\n4\n4\n20\n2\n21\n5\nmedLrms51\n0.308285\n0.924452\nFalse\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n4395\n395\n79\n7\n13\n6\nmedLsdD51\n0.151711\n0.865573\nTrue\n\n\n4396\n396\n79\n7\n13\n7\nmedLsdD51\n0.119087\n0.617591\nTrue\n\n\n4397\n397\n79\n7\n13\n8\nmedLsdD51\n0.086589\n0.370559\nTrue\n\n\n4398\n398\n79\n7\n13\n9\nmedLsdD51\n0.138026\n0.761551\nTrue\n\n\n4399\n399\n79\n7\n13\n10\nmedLsdD51\n0.143395\n0.802366\nTrue\n\n\n\n\n4400 rows × 9 columns"
+  },
+  {
+    "objectID": "material/scripts/exergame/exergame_boxplots.html#plot",
+    "href": "material/scripts/exergame/exergame_boxplots.html#plot",
+    "title": "Libraries",
+    "section": "Plot",
+    "text": "Plot"
+  },
+  {
+    "objectID": "material/scripts/exergame/exergame_treemap.html#data",
+    "href": "material/scripts/exergame/exergame_treemap.html#data",
+    "title": "Python Libraries",
+    "section": "Data",
+    "text": "Data\n\n\n\n\n\n\n\n\n\niSubj\ntrial\nAge\nDecade\nmedLrms51\nmedTI51\nmedK\nmeanK\nmedSpeed\nmedTIms51\nmedLcovD51\nmedLsd51\nmedLcov51\nmedLrmslD51\nmedLsdD51\nolder\nParticipants\nppt\nstrial\n\n\n\n\n0\n1\n1\n76\n7\n0.189493\n0.589529\n207.800939\n333.861515\n0.488721\n0.806345\n0.744766\n0.020602\n0.108687\n1.259172\n0.129068\nTrue\nParticipants\n1\n1\n\n\n1\n1\n2\n76\n7\n0.204152\n0.697338\n223.294322\n319.601546\n0.518278\n0.775451\n0.506944\n0.016446\n0.078140\n1.263366\n0.105902\nTrue\nParticipants\n1\n2\n\n\n2\n1\n3\n76\n7\n0.217347\n0.786131\n136.400753\n272.460861\n0.584193\n0.511902\n0.706127\n0.047372\n0.236467\n0.782796\n0.133917\nTrue\nParticipants\n1\n3\n\n\n3\n1\n4\n76\n7\n0.169569\n1.020695\n162.034626\n289.927862\n0.590151\n0.416398\n0.701803\n0.039017\n0.265361\n0.487570\n0.108637\nTrue\nParticipants\n1\n4\n\n\n4\n1\n5\n76\n7\n0.170786\n0.769747\n141.767674\n300.625818\n0.551706\n0.550029\n0.753161\n0.036798\n0.235907\n0.646194\n0.119610\nTrue\nParticipants\n1\n5"
+  },
+  {
+    "objectID": "material/scripts/exergame/exergame_treemap.html#plot",
+    "href": "material/scripts/exergame/exergame_treemap.html#plot",
+    "title": "Python Libraries",
+    "section": "Plot",
+    "text": "Plot"
+  },
+  {
+    "objectID": "material/scripts/exergame/exergame_parallel.html#data",
+    "href": "material/scripts/exergame/exergame_parallel.html#data",
+    "title": "Libraries",
+    "section": "Data",
+    "text": "Data\n\n\n\n\n\n\n\n\n\nidrow\nAge\nDecade\niSubj\ntrial\nmyVars\nvalue\nnormVal\nolder\n\n\n\n\n0\n0\n20\n2\n21\n1\nmedLrms51\n0.294961\n0.879737\nFalse\n\n\n1\n1\n20\n2\n21\n2\nmedLrms51\n0.308855\n0.926365\nFalse\n\n\n2\n2\n20\n2\n21\n3\nmedLrms51\n0.285579\n0.848253\nFalse\n\n\n3\n3\n20\n2\n21\n4\nmedLrms51\n0.264111\n0.776211\nFalse\n\n\n4\n4\n20\n2\n21\n5\nmedLrms51\n0.308285\n0.924452\nFalse\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n4395\n395\n79\n7\n13\n6\nmedLsdD51\n0.151711\n0.865573\nTrue\n\n\n4396\n396\n79\n7\n13\n7\nmedLsdD51\n0.119087\n0.617591\nTrue\n\n\n4397\n397\n79\n7\n13\n8\nmedLsdD51\n0.086589\n0.370559\nTrue\n\n\n4398\n398\n79\n7\n13\n9\nmedLsdD51\n0.138026\n0.761551\nTrue\n\n\n4399\n399\n79\n7\n13\n10\nmedLsdD51\n0.143395\n0.802366\nTrue\n\n\n\n\n4400 rows × 9 columns"
+  },
+  {
+    "objectID": "material/scripts/exergame/exergame_parallel.html#long-to-wide-format",
+    "href": "material/scripts/exergame/exergame_parallel.html#long-to-wide-format",
+    "title": "Libraries",
+    "section": "Long to wide format",
+    "text": "Long to wide format\n\n\n\n\n\n\n\n\n\n\n\n\n\nmyVars\nmeanK\nmedK\nmedLcov51\nmedLcovD51\nmedLrms51\nmedLrmslD51\nmedLsd51\nmedLsdD51\nmedSpeed\nmedTI51\nmedTIms51\n\n\nidrow\niSubj\ntrial\nAge\nDecade\nolder\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n0\n21\n1\n20\n2\nFalse\n0.249439\n0.386508\n0.075412\n0.072835\n0.879737\n0.519743\n0.108320\n0.281748\n0.517503\n0.226381\n0.424851\n\n\n1\n21\n2\n20\n2\nFalse\n0.241150\n0.402208\n0.042119\n0.048815\n0.926365\n0.528670\n0.065745\n0.188504\n0.525880\n0.228718\n0.395246\n\n\n2\n21\n3\n20\n2\nFalse\n0.306156\n0.421924\n0.055220\n0.056356\n0.848253\n0.503551\n0.074529\n0.199264\n0.475989\n0.223225\n0.444032\n\n\n3\n21\n4\n20\n2\nFalse\n0.314906\n0.472125\n0.038657\n0.045127\n0.776211\n0.465395\n0.051955\n0.145766\n0.465425\n0.194270\n0.426941\n\n\n4\n21\n5\n20\n2\nFalse\n0.331758\n0.370969\n0.216154\n0.154394\n0.924452\n0.438028\n0.337185\n0.668837\n0.508494\n0.397554\n0.318719\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n395\n13\n6\n79\n7\nTrue\n0.462433\n0.310683\n0.487390\n0.534489\n0.420993\n0.319932\n0.320356\n0.865573\n0.236963\n0.075700\n0.562622\n\n\n396\n13\n7\n79\n7\nTrue\n0.614123\n0.593777\n0.298158\n0.306034\n0.595596\n0.376401\n0.244837\n0.617591\n0.162618\n0.319512\n0.570391\n\n\n397\n13\n8\n79\n7\nTrue\n0.689066\n0.607419\n0.096133\n0.152150\n0.603868\n0.555657\n0.090200\n0.370559\n0.110850\n0.171225\n0.635001\n\n\n398\n13\n9\n79\n7\nTrue\n0.559573\n0.640555\n0.403544\n0.546359\n0.361771\n0.290451\n0.201352\n0.761551\n0.180877\n0.183091\n0.678713\n\n\n399\n13\n10\n79\n7\nTrue\n0.591788\n0.481796\n0.253956\n0.451933\n0.461524\n0.481894\n0.179540\n0.802366\n0.139853\n0.034949\n0.743380\n\n\n\n\n400 rows × 11 columns\n\n\n\n\n\n\n\n\n\n\n\nmyVars\nidrow\niSubj\ntrial\nAge\nDecade\nolder\nmeanK\nmedK\nmedLcov51\nmedLcovD51\nmedLrms51\nmedLrmslD51\nmedLsd51\nmedLsdD51\nmedSpeed\nmedTI51\nmedTIms51\n\n\n\n\n0\n0\n21\n1\n20\n2\nFalse\n0.249439\n0.386508\n0.075412\n0.072835\n0.879737\n0.519743\n0.108320\n0.281748\n0.517503\n0.226381\n0.424851\n\n\n1\n1\n21\n2\n20\n2\nFalse\n0.241150\n0.402208\n0.042119\n0.048815\n0.926365\n0.528670\n0.065745\n0.188504\n0.525880\n0.228718\n0.395246\n\n\n2\n2\n21\n3\n20\n2\nFalse\n0.306156\n0.421924\n0.055220\n0.056356\n0.848253\n0.503551\n0.074529\n0.199264\n0.475989\n0.223225\n0.444032\n\n\n3\n3\n21\n4\n20\n2\nFalse\n0.314906\n0.472125\n0.038657\n0.045127\n0.776211\n0.465395\n0.051955\n0.145766\n0.465425\n0.194270\n0.426941\n\n\n4\n4\n21\n5\n20\n2\nFalse\n0.331758\n0.370969\n0.216154\n0.154394\n0.924452\n0.438028\n0.337185\n0.668837\n0.508494\n0.397554\n0.318719\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n395\n395\n13\n6\n79\n7\nTrue\n0.462433\n0.310683\n0.487390\n0.534489\n0.420993\n0.319932\n0.320356\n0.865573\n0.236963\n0.075700\n0.562622\n\n\n396\n396\n13\n7\n79\n7\nTrue\n0.614123\n0.593777\n0.298158\n0.306034\n0.595596\n0.376401\n0.244837\n0.617591\n0.162618\n0.319512\n0.570391\n\n\n397\n397\n13\n8\n79\n7\nTrue\n0.689066\n0.607419\n0.096133\n0.152150\n0.603868\n0.555657\n0.090200\n0.370559\n0.110850\n0.171225\n0.635001\n\n\n398\n398\n13\n9\n79\n7\nTrue\n0.559573\n0.640555\n0.403544\n0.546359\n0.361771\n0.290451\n0.201352\n0.761551\n0.180877\n0.183091\n0.678713\n\n\n399\n399\n13\n10\n79\n7\nTrue\n0.591788\n0.481796\n0.253956\n0.451933\n0.461524\n0.481894\n0.179540\n0.802366\n0.139853\n0.034949\n0.743380\n\n\n\n\n400 rows × 17 columns"
+  },
+  {
+    "objectID": "material/scripts/exergame/exergame_parallel.html#plot",
+    "href": "material/scripts/exergame/exergame_parallel.html#plot",
+    "title": "Libraries",
+    "section": "Plot",
+    "text": "Plot"
+  },
+  {
+    "objectID": "material/scripts/exergame/exergame_parallel.html#lets-try-r",
+    "href": "material/scripts/exergame/exergame_parallel.html#lets-try-r",
+    "title": "Libraries",
+    "section": "Let’s try R",
+    "text": "Let’s try R"
+  },
+  {
+    "objectID": "material/scripts/exergame/exergame_pca.html#data",
+    "href": "material/scripts/exergame/exergame_pca.html#data",
+    "title": "Library",
+    "section": "Data",
+    "text": "Data\n\n\n\nA data.frame: 6 × 16\n\n\n\niSubj\ntrial\nAge\nDecade\nmedLrms51\nmedTI51\nmedK\nmeanK\nmedSpeed\nmedTIms51\nmedLcovD51\nmedLsd51\nmedLcov51\nmedLrmslD51\nmedLsdD51\nolder\n\n\n\n&lt;int&gt;\n&lt;int&gt;\n&lt;int&gt;\n&lt;int&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;lgl&gt;\n\n\n\n\n1\n1\n1\n76\n7\n0.1894931\n0.5895294\n207.8009\n333.8615\n0.4887213\n0.8063448\n0.7447658\n0.02060208\n0.10868742\n1.2591721\n0.1290676\nTRUE\n\n\n2\n1\n2\n76\n7\n0.2041523\n0.6973378\n223.2943\n319.6015\n0.5182781\n0.7754507\n0.5069439\n0.01644558\n0.07814028\n1.2633661\n0.1059025\nTRUE\n\n\n3\n1\n3\n76\n7\n0.2173473\n0.7861308\n136.4008\n272.4609\n0.5841934\n0.5119019\n0.7061267\n0.04737236\n0.23646721\n0.7827964\n0.1339169\nTRUE\n\n\n4\n1\n4\n76\n7\n0.1695694\n1.0206954\n162.0346\n289.9279\n0.5901514\n0.4163981\n0.7018032\n0.03901695\n0.26536092\n0.4875698\n0.1086375\nTRUE\n\n\n5\n1\n5\n76\n7\n0.1707855\n0.7697467\n141.7677\n300.6258\n0.5517064\n0.5500293\n0.7531606\n0.03679774\n0.23590743\n0.6461938\n0.1196096\nTRUE\n\n\n6\n1\n6\n76\n7\n0.1897457\n0.8447487\n135.1824\n278.8230\n0.5872821\n0.4505710\n0.6610873\n0.04081446\n0.24733843\n0.5800137\n0.1164555\nTRUE"
+  },
+  {
+    "objectID": "material/scripts/exergame/exergame_pca.html#pca",
+    "href": "material/scripts/exergame/exergame_pca.html#pca",
+    "title": "Library",
+    "section": "PCA",
+    "text": "PCA\n\n\nStandard deviations (1, .., p=11):\n [1] 2.41173960 1.71307470 0.98895667 0.91062388 0.37032009 0.35355737\n [7] 0.26429141 0.25548704 0.15100026 0.12298269 0.08016767\n\nRotation (n x k) = (11 x 11):\n                    PC1         PC2         PC3         PC4         PC5\nmedLrms51    0.05971084  0.53757150  0.31886975 -0.01290679 -0.22309384\nmedTI51      0.26162265  0.19597664  0.03471394  0.73464487  0.34953967\nmedK        -0.36843362 -0.19195554 -0.02969850  0.26195206 -0.09271083\nmeanK       -0.35584700 -0.15390292  0.24456723  0.37430522 -0.17410174\nmedSpeed     0.36050703  0.15369588 -0.28480403 -0.26293426 -0.17036643\nmedTIms51   -0.39049317 -0.12406172  0.16758189 -0.08319465  0.00148884\nmedLcovD51   0.10189172 -0.54217342  0.10147216 -0.11932485 -0.08720354\nmedLsd51     0.37458176 -0.02188806  0.30760090  0.21941535 -0.30778866\nmedLcov51    0.32234471 -0.32630834  0.07510445  0.15663402 -0.57921111\nmedLrmslD51 -0.26605790  0.36743670  0.37442296 -0.15458067 -0.32794638\nmedLsdD51    0.24037724 -0.19273118  0.69027294 -0.25404795  0.46340572\n                    PC6         PC7        PC8         PC9         PC10\nmedLrms51   -0.19932745  0.35061296 -0.3523983  0.26292013 -0.178449964\nmedTI51     -0.38852965  0.02280413  0.2698161 -0.01080795  0.007880793\nmedK         0.17450740  0.69869694  0.1080169 -0.43415464 -0.157085821\nmeanK        0.17351756  0.01394028 -0.1438506  0.43747398  0.607913551\nmedSpeed     0.02586282  0.47224438  0.4756079  0.25711892  0.369810093\nmedTIms51   -0.10293663 -0.11703397  0.6291363  0.42701592 -0.367223863\nmedLcovD51  -0.59053037  0.25761816 -0.2362108  0.20891579 -0.163414852\nmedLsd51     0.51013797 -0.01645476  0.0598884  0.14751478 -0.426465907\nmedLcov51   -0.15686632 -0.21662253  0.1511338 -0.26112260  0.156389822\nmedLrmslD51 -0.29502884 -0.12726616  0.2307516 -0.38117033  0.139956770\nmedLsdD51    0.12988972  0.14733363  0.1147555 -0.15345188  0.222761160\n                   PC11\nmedLrms51   -0.40990160\nmedTI51      0.07487087\nmedK        -0.07648161\nmeanK        0.08671689\nmedSpeed     0.11993174\nmedTIms51   -0.24457142\nmedLcovD51   0.34969644\nmedLsd51     0.39240571\nmedLcov51   -0.48676461\nmedLrmslD51  0.44855680\nmedLsdD51   -0.15618624"
+  },
+  {
+    "objectID": "material/scripts/exergame/exergame_pca.html#plot",
+    "href": "material/scripts/exergame/exergame_pca.html#plot",
+    "title": "Library",
+    "section": "Plot",
+    "text": "Plot"
+  },
+  {
     "objectID": "material/slides/vis_slides/DataVis-05-Techniques02.html#welcome",
     "href": "material/slides/vis_slides/DataVis-05-Techniques02.html#welcome",
     "title": "My Quarto Slides",
