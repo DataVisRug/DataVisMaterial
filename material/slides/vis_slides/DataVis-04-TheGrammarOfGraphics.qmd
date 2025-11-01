@@ -75,11 +75,14 @@ Source: [Grammar of Graphics: Data Stories](https://blog.gramener.com/grammar-of
 
 ## A layer is composed of
 
-- a geometric object
-- a statistical transformation
-- a position adjustment
-- a dataset which can be inherited from the parent layer, and
-- aesthetic mappings
+1. data and aesthetic mappings
+2. a geometric object
+3. a statistical transformation
+4. a position adjustment
+
+---
+
+## 1. Data and aesthetic mapping
 
 ---
 
@@ -93,12 +96,72 @@ Source: [A *simple* introduction to ggplot2](https://www.rforecology.com/post/a-
 
 ---
 
+## 2. Geometric objects
+
+---
+
 ## Geometric object
 
 ![](https://www.rforecology.com/ggplot2_image3.png)
 
 ::: aside
 Source: [A *simple* introduction to ggplot2](https://www.rforecology.com/post/a-simple-introduction-to-ggplot2/)
+:::
+
+---
+
+## A sample of geometric objects {.smaller}
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+**Graphical primitives**
+
+- `geom_path()`
+- `geom_rect()`
+- `geom_poligon()`
+
+**One variable**
+
+- Discrete
+  + `geom_bar()`
+- Continuous
+  + `geom_histogram()`
+  + `geom_density()`
+
+:::
+
+::: {.column width="33%"}
+
+**Two variables**
+
+- Both continuous
+  + `geom_smooth()`
+  + `geom_point()`
+- At least one discrete
+  + `geom_count()`
+  + `geom_jitter()`
+- One continuous one discrete
+  + `geom_boxplot()`.
+  + `geom_violin()`
+:::
+
+::: {.column width="33%"}
+
+**Three variables**
+
+- `geom_contour()`
+- `geom_tile()`
+- `geom_raster()`
+
+
+:::
+
+::::
+
+::: aside
+Source: [ggplot2: Elegant Graphics for Data Analysis (3e) ](https://ggplot2-book.org/layers.html#sec-geom)
 :::
 
 ---
@@ -194,13 +257,387 @@ p <- ggplot(temps_long,
 
 
 ::: aside
-Code: `Fig2_3_temperature_plot.ipynb`
+Code: [Fig2_3_temperature_plot.ipynb](https://github.com/Venustiano/DataVisMaterial/blob/main/material/scripts/FDV/Fig2_3_temperature_plot.ipynb)
 :::
 
 ---
 
-## Plot
+## Temperature plot
 
 ```{r}
 print(p)
 ```
+
+
+---
+
+### Seaborn and the Grammar of Graphics
+
+```{.python code-line-numbers="5-13"}
+# Create plot
+fig, ax = plt.subplots(figsize=(9, 5))
+
+# Use seaborn lineplot; pass palette by mapping
+sns.lineplot(
+    data=lf,
+    x='date',
+    y='temperature',
+    hue='location',
+    palette=palette_map,
+    linewidth=1.5,  # similar to geom_line linewidth
+    ax=ax
+)
+
+# X-axis limits and breaks (use valid years 2000-01-01 to 2001-01-04)
+xmin = pd.to_datetime("2000-01-01")
+```
+
+::: aside
+[Seaborn and the Grammar of Graphics](https://www.practicaldatascience.org/notebooks/class_5/week_1/2.3.1_plotting_with_seaborn.html#seaborn-and-the-grammar-of-graphics)
+:::
+
+---
+
+
+## Temperature plot using `Seaborn`
+
+```{r}
+# getwd()
+
+library(reticulate)
+use_python("/opt/conda/bin/python", required = TRUE)
+```
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from matplotlib.dates import DateFormatter, MonthLocator
+
+lf = pd.read_csv('../../scripts/FDV/temps_long.csv')
+
+def force_year_2000(s):
+    if pd.isna(s):
+        return pd.NaT
+    parts = str(s).split('-')
+    if len(parts) == 3:
+        return pd.to_datetime(f"2000-{int(parts[1]):02d}-{int(parts[2]):02d}", errors='coerce')
+    return pd.to_datetime(s, errors='coerce')
+
+lf['date'] = lf['date'].apply(force_year_2000)
+
+# Set plotting style to something like theme_dviz_grid
+sns.set_style("whitegrid")
+plt.rcParams.update({
+    "axes.spines.top": False,
+    "axes.spines.right": False,
+    "axes.grid.which": "major",
+    "grid.color": "#e9e9e9",
+    "grid.linestyle": "-",
+    "grid.linewidth": 0.8
+})
+
+# Okabe-Ito-ish palette (colors from the Okabe-Ito palette)
+okabe_ito = [
+    "#E69F00",  # orange
+    "#56B4E9",  # sky blue
+    "#009E73",  # bluish green
+    "#F0E442",  # yellow
+    "#0072B2",  # blue
+    "#D55E00",  # vermillion
+    "#CC79A7"   # reddish purple
+]
+# choose order similar to R: order = c(1:3,7) -> indices 0,1,2,6 in Python zero-based
+palette_order = [okabe_ito[i] for i in [0, 1, 2, 6]]
+
+# If you have exactly 4 locations and want those colors in that order:
+locations = lf['location'].unique()
+# Map the palette to the location factor levels (you may want to set explicit levels)
+palette_map = {}
+for i, loc in enumerate(sorted(locations)):  # use sorted or your preferred order
+    palette_map[loc] = palette_order[i % len(palette_order)]
+
+# Create plot
+fig, ax = plt.subplots(figsize=(9, 5))
+
+# Use seaborn lineplot; pass palette by mapping
+sns.lineplot(
+    data=lf,
+    x='date',
+    y='temperature',
+    hue='location',
+    palette=palette_map,
+    linewidth=1.5,  # similar to geom_line linewidth
+    ax=ax
+)
+
+# X-axis limits and breaks (use valid years 2000-01-01 to 2001-01-04)
+xmin = pd.to_datetime("2000-01-01")
+xmax = pd.to_datetime("2001-01-04")
+ax.set_xlim(xmin, xmax)
+
+# Place month ticks at Jan, Apr, Jul, Oct, Jan (across year boundary)
+# Use MonthLocator for the specific months
+month_positions = [1, 4, 7, 10, 1]  # the last 1 represents the Jan in next year
+# We'll place ticks at 2000-01-01, 2000-04-01, 2000-07-01, 2000-10-01, 2001-01-01
+tick_dates = pd.to_datetime([
+    "2000-01-01", "2000-04-01", "2000-07-01", "2000-10-01", "2001-01-01"
+])
+ax.set_xticks(tick_dates)
+ax.xaxis.set_major_formatter(DateFormatter('%b'))  # short month names like Jan, Apr, ...
+
+# Y-axis limits and ticks
+ax.set_ylim(19.9, 107)
+ax.set_yticks(np.arange(20, 101, 20))
+ax.set_ylabel("temperature (°F)")
+
+# Legend formatting: remove legend title (equivalent to name = NULL) and center title alignment
+leg = ax.legend(title=None, frameon=False, loc='best')
+# If you want the legend placed in a specific spot, change loc
+
+# Small layout tweaks
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## Changing the geometry to `heatmap`
+
+Preprocessing:
+
+- Compute mean by `location & month`
+- Replace `month` numbers with `names`
+
+```{r}
+library(data.table)
+
+# ensure temps_long is a data.table
+setDT(temps_long)
+
+month_names <- c("01" = "Jan", "02" = "Feb", "03" = "Mar",   
+                  "04" = "Apr", "05" = "May", "06" = "Jun",
+                  "07" = "Jul", "08" = "Aug", "09" = "Sep", "10" = "Oct", "11" = "Nov", "12" = "Dec"
+                )
+
+# compute mean by location & month, then replace month numbers with names and set factor levels
+mean_temps <- temps_long[, .(mean = mean(temperature, na.rm = TRUE)),
+                          by = .(location, month)
+                        ]
+mean_temps[, month := month_names[month]             # convert numeric month -> name
+          ]
+mean_temps[, month := factor(month, levels = unname(month_names))  # set factor with desired order
+          ]
+
+head(mean_temps) |> gt() %>%  
+  tab_header(
+    title = "Mean temperature per month",
+  ) %>% 
+  cols_align(align = "center") 
+
+```
+
+---
+
+## Aesthetics mapping and geometry
+
+```{.r code-line-numbers="1-3"}
+p <- ggplot(mean_temps, 
+            aes(x = month, y = location, fill = mean)) + 
+     geom_tile(width = .95, height = 0.95) +
+     scale_fill_viridis_c(option = "B", begin = 0.15, end = 0.98,
+                       name = "temperature (°F)") + 
+     scale_y_discrete(name = NULL) +
+     ...
+```
+
+```{r}
+#| fig-width: 15
+#| out-width: "80%"
+p <- ggplot(mean_temps, 
+            aes(x = month, y = location, fill = mean)) + 
+     geom_tile(width = .95, height = 0.95) +
+     scale_fill_viridis_c(option = "B", begin = 0.15, end = 0.98,
+                       name = "temperature (°F)") + 
+      scale_y_discrete(name = NULL) +
+      coord_fixed(expand = FALSE) +
+      theme_dviz_open() +
+      theme(axis.line = element_blank(),
+        axis.ticks = element_blank(),
+        #axis.text.y = element_text(size = 14),
+        legend.title = element_text(size = 12)
+      )
+print(p)
+```
+
+---
+
+## 3. Statistical transformations
+
+---
+
+### Common `statistical` transformations
+
+<br>
+
+
+```{r}
+library(gt)
+
+# Build a data frame with the information
+stat_table <- tibble::tribble(
+  ~Name, ~Description,
+  "bin", "Divide continuous range into bins, and count number of points in each",
+  "boxplot", "Compute statistics necessary for boxplot",
+  "contour", "Calculate contour lines",
+  "density", "Compute 1d density estimate",
+  "identity", "Identity transformation, f(x) = x",
+  "jitter", "Jitter values by adding small random value",
+  "qq", "Calculate values for quantile-quantile plot",
+  "quantile", "Quantile regression",
+  "smooth", "Smoothed conditional mean of y given x",
+  "summary", "Aggregate values of y for given x",
+  "unique", "Remove duplicated observations"
+)
+
+stat_table |> 
+  gt() |> 
+  tab_header(
+    title = md("**ggplot2 `stat_` functions**"),
+    subtitle = "Table adapted from Hadley Wickham (2016),"
+  ) |> 
+  fmt_markdown(columns = vars(Name, Description)) |> 
+  cols_align(align = "left", columns = vars(Name, Description))
+
+# knitr::kable(stat_table, caption = "Common ggplot2 stat_ functions")
+
+```
+
+---
+
+## Contours
+
+`Blue jay` relationship between body mass and head length.
+
+<br>
+
+```{r}
+
+head(blue_jays) |> gt() %>%  
+  tab_header(
+    title = "Blue jay dataset",
+  ) %>% 
+  cols_align(align = "center") 
+```
+
+## Contour plot, first version
+
+```{.r code-line-numbers="1,6,7,8,"}
+blue_jays_base <- ggplot(blue_jays, aes(Mass, Head)) + 
+  scale_x_continuous(limits = c(57, 82), expand = c(0, 0), name = "body mass (g)") +
+  scale_y_continuous(limits = c(49, 61), expand = c(0, 0), name = "head length (mm)" ) +
+  theme_dviz_grid()
+
+blue_jays_base + 
+  stat_density_2d(color = "black", size = 0.4, binwidth = 0.004) +
+  geom_point(color = "black", size = 1.5, alpha = 1/3)
+```
+
+```{r}
+blue_jays_base <- ggplot(blue_jays, aes(Mass, Head)) + 
+  scale_x_continuous(
+    limits = c(57, 82),
+    expand = c(0, 0),
+    name = "body mass (g)") +
+  scale_y_continuous(
+    limits = c(49, 61),
+    expand = c(0, 0),
+    name = "head length (mm)"
+  ) +
+  theme_dviz_grid()
+
+blue_jays_base + 
+  stat_density_2d(color = "black", size = 0.4, binwidth = 0.004) +
+  geom_point(color = "black", size = 1.5, alpha = 1/3)
+```
+
+---
+
+```{r}
+#| echo: true
+
+# Shading
+blue_jays_base + 
+  stat_density_2d(aes(fill = ..level..), geom = "polygon", color = "black", size = 0.15, binwidth = 0.004) +
+  geom_point(color = "black", size = 1.5, alpha = .4) +
+  scale_fill_gradient(low = "grey95", high = "grey70", guide = "none")
+```
+
+::: aside
+Source: [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/overlapping-points.html), `Fig18_8-10_contours.ipynb`
+:::
+
+---
+
+## Grouping  by `sex`
+
+```{.r code-line-numbers="1-4"}
+blue_jays_base + 
+  aes(color = KnownSex) +
+  stat_density_2d(size = 0.4, binwidth = 0.006) +
+  geom_point(size = 1.5, alpha = 0.7) +
+  ...
+```
+
+```{r}
+blue_jays_base + 
+  aes(color = KnownSex) +
+  stat_density_2d(size = 0.4, binwidth = 0.006) +
+  geom_point(size = 1.5, alpha = 0.7) +
+  scale_color_manual(
+    values = c(F = "#D55E00", M = "#0072B2"),
+    breaks = c("F", "M"),
+    labels = c("female birds   ", "male birds"),
+    name = NULL,
+    guide = guide_legend(
+      direction = "horizontal",
+      override.aes = list(size = 2, linetype = 0)
+    )
+  ) +
+  theme(
+    legend.position = c(1, 0),
+    legend.justification = c(1, 0),
+    #legend.position = "top",
+    #legend.justification = "right",
+    #legend.box.spacing = unit(3.5, "pt"), # distance between legend and plot
+    legend.text = element_text(vjust = 0.6),
+    legend.spacing.x = unit(2, "pt"),
+    legend.background = element_rect(fill = "white", color = NA),
+    #legend.key.width = unit(10, "pt")
+    axis.ticks.length = unit(0, "pt"),
+    axis.ticks = element_blank()
+  )
+```
+
+---
+
+## Bins
+
+Common applications:
+
+- Histograms
+- Contours
+- `Heatmaps`, aggregate values into grid cells to display intensity across two dimensions
+- Temporal aggregation
+- Large-data intensity approximation
+
+---
+
+## Mass spectrometry {.smaller}
+
+Prompt: `Given a pandas dataframes with more than 200 million rows and an 'mz' column having more thatn 26 million unique values. How can the table be aggregated in such a way that we can create a heat mpa wint 'mz' on the vertical axis, time on the horizontal axis and intensity on the 'z' axis (color)?`
+
+## 4. Position adjustment
+
+
