@@ -39,7 +39,7 @@ Take the analogy: `good grammar is just the first step in creating a good senten
 
 ## Graphics Pipeline {.smaller}
 
-![](https://pyg2.readthedocs.io/en/latest/_images/pipeline.png){style="margin:0; padding:0; display:block;" width="800px"}
+![](./images/pipeline.png){style="margin:0; padding:0; display:block;" width="800px"}
 
 - `Algebra`, the operations that allow us to combine variables and specify dimensions of graphs.
 - `Scales` involves the representation of variables on measured dimensions.
@@ -203,7 +203,7 @@ temps_long <- filter(ncdc_normals,
 
 head(temps_long) |> gt() %>%  
   tab_header(
-    title = "Daily temprature data",
+    title = "Daily temperature data",
   ) %>% 
   cols_align(align = "center") 
 ```
@@ -636,7 +636,71 @@ Common applications:
 
 ## Mass spectrometry {.smaller}
 
-Prompt: `Given a pandas dataframes with more than 200 million rows and an 'mz' column having more thatn 26 million unique values. How can the table be aggregated in such a way that we can create a heat mpa wint 'mz' on the vertical axis, time on the horizontal axis and intensity on the 'z' axis (color)?`
+:::: {.columns}
+
+::: {.column width="40%"}
+
+Prompt: `Given a pandas dataframes with more than 200 million rows and an 'mz' column having more than 26 million unique values. How can the table be aggregated in such a way that we can create a heat map wint 'mz' on the vertical axis, time on the horizontal axis and intensity on the 'z' axis (color)?`
+:::
+
+::: {.column width="60%"}
+
+| Id | Time     | scanid | index  | intensity | mz         |
+|----|----------:|--------:|--------:|------------:|-------------:|
+| 1  | 0.312346  | 35     | 376857 | 9           | 1548.487069 |
+| 1  | 0.312346  | 38     | 2796   | 9           | 99.330436   |
+| 1  | 0.312346  | 38     | 274380 | 9           | 979.736426  |
+| 1  | 0.312346  | 38     | 313091 | 9           | 1179.351225 |
+| 1  | 0.312346  | 39     | 322655 | 9           | 1231.517479 |
+| …  | …         | …      | …      | …           | …           |
+| 6481 | 691.492002 | 916 | 55969  | 86          | 200.037732  |
+| 6481 | 691.492002 | 916 | 74584  | 138         | 243.540075  |
+| 6481 | 691.492002 | 916 | 92301  | 62          | 288.915998  |
+| 6481 | 691.492002 | 916 | 218889 | 53          | 725.852351  |
+| 6481 | 691.492002 | 917 | 215210 | 99          | 710.363398  |
+
+:::
+
+::::
+
+::: {.aside}
+**Note:**  
+Data excerpt from a mass spectrometry file.  
+Dataset contains **221,592,952 rows × 6 columns**.
+:::
+
+---
+
+## Response {.smaller}
+
+To aggregate such a large Pandas DataFrame for creating a heatmap, you can use binning and grouping techniques to reduce the data into manageable chunks. Here's a general approach to achieve this:
+
+<br>
+
+```{.python}
+# Step 1: Downsample or aggregate the data if necessary to avoid memory issues
+# Step 2: Create a pivot table (heatmap structure) by aggregating intensity
+heatmap_data = super_df.pivot_table(index=pd.cut(super_df['mz'], bins=mz_bins), 
+                              columns=pd.cut(super_df['Time'], bins=time_bins), 
+                              values='intensity', 
+                              aggfunc='mean')  # You can change 'mean' to 'sum' if appropriate
+
+# Step 3: Apply a logarithmic transformation to highlight minority values
+# Step 4: Plot the heatmap
+plt.figure(figsize=(17, 10))  # Adjust figure size as needed
+sns.heatmap(heatmap_data_log, cmap='magma', norm=None,cbar_kws={'label': 'Log(Intensity)'})  
+# 'magma' gives more emphasis on high values
+
+# Step 6: Show the plot
+plt.show()
+```
+
+---
+
+## Result
+
+![](./images/mz_vs_time_vs_intensity_heatmap.png)
+
 
 ## 4. Position adjustment
 
