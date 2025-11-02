@@ -340,6 +340,16 @@
     ]
   },
   {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#mapping-data-to-aesthetics",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#mapping-data-to-aesthetics",
+    "title": "Data Visualization Techniques",
+    "section": "Mapping data to aesthetics",
+    "text": "Mapping data to aesthetics\n\nLeft, continuous data to size and color\nRight, discrete data to shape and color",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
     "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#aestetic-mappings",
     "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#aestetic-mappings",
     "title": "Data Visualization Techniques",
@@ -490,11 +500,11 @@
     ]
   },
   {
-    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#mass-spectrometry",
-    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#mass-spectrometry",
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#binning-in-mass-spectrometry-data",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#binning-in-mass-spectrometry-data",
     "title": "Data Visualization Techniques",
-    "section": "Mass spectrometry",
-    "text": "Mass spectrometry\n\n\nPrompt: Given a pandas dataframes with more than 200 million rows and an 'mz' column having more than 26 million unique values. How can the table be aggregated in such a way that we can create a heat map wint 'mz' on the vertical axis, time on the horizontal axis and intensity on the 'z' axis (color)?\n\n\n\n\nId\nTime\nscanid\nindex\nintensity\nmz\n\n\n\n\n1\n0.312346\n35\n376857\n9\n1548.487069\n\n\n1\n0.312346\n38\n2796\n9\n99.330436\n\n\n1\n0.312346\n38\n274380\n9\n979.736426\n\n\n1\n0.312346\n38\n313091\n9\n1179.351225\n\n\n1\n0.312346\n39\n322655\n9\n1231.517479\n\n\n…\n…\n…\n…\n…\n…\n\n\n6481\n691.492002\n916\n55969\n86\n200.037732\n\n\n6481\n691.492002\n916\n74584\n138\n243.540075\n\n\n6481\n691.492002\n916\n92301\n62\n288.915998\n\n\n6481\n691.492002\n916\n218889\n53\n725.852351\n\n\n6481\n691.492002\n917\n215210\n99\n710.363398\n\n\n\n\n\n\nNote:\nData excerpt from a mass spectrometry file.\nDataset contains 221,592,952 rows × 6 columns.",
+    "section": "Binning in mass spectrometry data",
+    "text": "Binning in mass spectrometry data\n\n\nPrompt: Given a pandas dataframes with more than 200 million rows and an ‘mz’ column having more than 26 million unique values. How can the table be aggregated in such a way that we can create a heat map with mz on the vertical axis, time on the horizontal axis and intensity on the ‘z’ axis (color)?\n\n\n\n\nId\nTime\nscanid\nindex\nintensity\nmz\n\n\n\n\n1\n0.312346\n35\n376857\n9\n1548.487069\n\n\n1\n0.312346\n38\n2796\n9\n99.330436\n\n\n1\n0.312346\n38\n274380\n9\n979.736426\n\n\n1\n0.312346\n38\n313091\n9\n1179.351225\n\n\n1\n0.312346\n39\n322655\n9\n1231.517479\n\n\n…\n…\n…\n…\n…\n…\n\n\n6481\n691.492002\n916\n55969\n86\n200.037732\n\n\n6481\n691.492002\n916\n74584\n138\n243.540075\n\n\n6481\n691.492002\n916\n92301\n62\n288.915998\n\n\n6481\n691.492002\n916\n218889\n53\n725.852351\n\n\n6481\n691.492002\n917\n215210\n99\n710.363398\n\n\n\n\n\n\nNote:\nData excerpt from a mass spectrometry file.\nDataset contains 221,592,952 rows × 6 columns.",
     "crumbs": [
       "Data Visualization Techniques"
     ]
@@ -544,7 +554,7 @@
     "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#using-jitter-to-deal-with-occlusion",
     "title": "Data Visualization Techniques",
     "section": "Using jitter to deal with occlusion",
-    "text": "Using jitter to deal with occlusion",
+    "text": "Using jitter to deal with occlusion\n\n\n\n\n\n\n\n\n\n\n\nSource: Fundamentals of Data Visualization, Fig1-3_jitter.ipynb",
     "crumbs": [
       "Data Visualization Techniques"
     ]
@@ -565,6 +575,96 @@
     "title": "Data Visualization Techniques",
     "section": "Jitter",
     "text": "Jitter",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#the-facets-layer",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#the-facets-layer",
+    "title": "Data Visualization Techniques",
+    "section": "The facets layer",
+    "text": "The facets layer\n\nFaceting = splitting a dataset into subsets and drawing the same plot design for each subset.\nIt’s a declarative way to show conditional relationships: “plot y vs x for each level of variable z”.\nBenefits: compares patterns across groups while keeping scales and geoms consistent.\nThe row and column variables must be categorical.",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#violin-plots-example",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#violin-plots-example",
+    "title": "Data Visualization Techniques",
+    "section": "Violin plots example",
+    "text": "Violin plots example\n\n\n\npenguins.csv",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#heatmap-facets-example",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#heatmap-facets-example",
+    "title": "Data Visualization Techniques",
+    "section": "Heatmap facets example",
+    "text": "Heatmap facets example\n\n\n\nSource: https://doi.org/10.1016/j.gaitpost.2017.12.015",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#coodinate-systems",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#coodinate-systems",
+    "title": "Data Visualization Techniques",
+    "section": "Coodinate systems",
+    "text": "Coodinate systems\n\nIn the Grammar of Graphics, the coordinate system defines how data coordinates are mapped to the 2D plane of the plot.\nIt determines:\n\nThe axes (orientation and scaling)\nThe shape of geometric objects\nThe relationships between x and y aesthetics",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#importance-of-coordinate-systems",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#importance-of-coordinate-systems",
+    "title": "Data Visualization Techniques",
+    "section": "Importance of coordinate systems",
+    "text": "Importance of coordinate systems\n\nThey control how data is drawn, not what data is shown.\nChanging coordinates can:\n\nFlip, stretch, or transform plots\nReveal patterns not visible in the default Cartesian system\nSupport specialized visualizations (like polar plots)",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#common-coordinate-systems",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#common-coordinate-systems",
+    "title": "Data Visualization Techniques",
+    "section": "Common Coordinate Systems",
+    "text": "Common Coordinate Systems\n\n\n\n\n\n\n\n\nCommon Coordinate Systems in ggplot2\n\n\nFunction\nDescription\n\n\n\n\ncoord_cartesian()\nDefault Cartesian coordinates; standard x-y axes.\n\n\ncoord_flip()\nSwaps x and y axes — useful for horizontal bar plots.\n\n\ncoord_fixed()\nEnsures fixed aspect ratio between x and y units.\n\n\ncoord_polar()\nConverts Cartesian to polar coordinates (e.g., pie charts).\n\n\ncoord_quickmap()\nApproximates a Mercator projection — great for maps.\n\n\ncoord_trans()\nApplies a mathematical transformation to axes (e.g., log scale).",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#example-polar-coordinates",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#example-polar-coordinates",
+    "title": "Data Visualization Techniques",
+    "section": "Example: Polar Coordinates",
+    "text": "Example: Polar Coordinates\n\n\n\n\n\n\n\n\n\n\n\n\n\nSynthetic daily temperature data\ntime series -&gt; circular layout,\n\nThe x-axis (day of year) -&gt; angle.\n\nThe y-axis (temperature) -&gt; distance from center.\n\n\n\n\nThis type of visualization helps identify repeating trends —\nlike seasonal temperature variation — in a compact, intuitive way.",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#rug-plot-app",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#rug-plot-app",
+    "title": "Data Visualization Techniques",
+    "section": "RUG plot app",
+    "text": "RUG plot app\nCreate facets, violin plots, tikz using:",
+    "crumbs": [
+      "Data Visualization Techniques"
+    ]
+  },
+  {
+    "objectID": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#the-grammar-o-graphics-in-python",
+    "href": "material/slides/vis_slides/DataVis-04-TheGrammarOfGraphics.html#the-grammar-o-graphics-in-python",
+    "title": "Data Visualization Techniques",
+    "section": "The Grammar o Graphics in python",
+    "text": "The Grammar o Graphics in python\nplotnine",
     "crumbs": [
       "Data Visualization Techniques"
     ]
