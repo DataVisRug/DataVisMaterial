@@ -582,7 +582,7 @@ tools::texi2dvi("p_plot.tex", pdf = TRUE, clean = TRUE)
 
 ## Boxplots 
 
-::: columns
+:::: {.columns}
 
 ::: {.column width="50%"}
 ```{python}
@@ -595,19 +595,21 @@ plot = px.box(x=lf['myVars'],
 ```
 :::
 
-::: {.column width="50%" style="font-size: 50%;"}
+::: {.column style="width:50%; font-size:50%;"}
 - Median
 - Quartiles 25% above and below the median
 - Whiskers
 - Outliers
 :::
-:::
+::::
 
 ```{python}
 #| echo: false
 
 plot.show()
 ```
+
+---
 
 ## Would it be better to use boxplots?
 
