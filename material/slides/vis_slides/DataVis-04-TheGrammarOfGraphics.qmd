@@ -86,6 +86,63 @@ Source: [Grammar of Graphics: Data Stories](https://blog.gramener.com/grammar-of
 
 ---
 
+### Scales — Mapping Data to Aesthetic Attributes
+
+::: {.columns}
+::: {.column width="55%"}
+
+```{r}
+library(ggplot2)
+
+df <- data.frame(
+  x = 1:10,
+  y = (1:10)^2,
+  group = rep(c("A", "B"), each = 5)
+)
+
+ggplot(df, aes(x, y, color = group, size = y)) +
+  geom_point() +
+  scale_color_manual(values = c("A" = "#0072B2", "B" = "#E69F00")) +
+  scale_size_continuous(range = c(2, 10)) +
+  labs(
+    title = "Mapping Data to Color and Size",
+    x = "X Value", y = "Y Value"
+  ) +
+  theme_minimal(base_size = 18) +
+  theme(plot.title = element_text(face = "bold", hjust = 0.5))
+```
+:::
+::: {.column width="45%" .smaller}
+What is a Scale?
+
+    A scale defines how data values are translated into visual properties (aesthetics).
+
+    Each aesthetic — color, size, shape, position, etc. — has a corresponding scale.
+
+    You can customize scales to control:
+
+        Color palettes
+        Axis limits and breaks
+        Legend appearance
+        Transformations (e.g., log, sqrt)
+:::
+:::
+
+::: aside
+💡 Think of scales as the “link” between your data and what you see.
+:::
+
+---
+
+## Mapping data to aesthetics
+
+- Left, `continuous` data to size and color
+- Right, `discrete` data to shape and color
+
+![](./images/data_to_aesthetics.png)
+
+---
+
 ## Aestetic mappings
 
 ![](https://www.rforecology.com/ggplot2_image2.png){fig-align="center" width="800px"}
@@ -639,13 +696,13 @@ Common applications:
 
 ---
 
-## Mass spectrometry {.smaller}
+## Binning in mass spectrometry data {.smaller}
 
 :::: {.columns}
 
 ::: {.column width="40%"}
 
-Prompt: `Given a pandas dataframes with more than 200 million rows and an 'mz' column having more than 26 million unique values. How can the table be aggregated in such a way that we can create a heat map wint 'mz' on the vertical axis, time on the horizontal axis and intensity on the 'z' axis (color)?`
+Prompt: Given a pandas dataframes with more than 200 million rows and an 'mz' column having more than 26 million unique values. How can the table be aggregated in such a way that we can create a heat map with **`mz`** on the vertical axis, **`time`** on the horizontal axis and **`intensity`** on the 'z' axis (color)?
 :::
 
 ::: {.column width="60%"}
@@ -823,6 +880,10 @@ p_mpg_solid <- ggplot(mpg, aes(y = cty, x = displ, color = drv, fill = drv)) +
 stamp_bad(p_mpg_solid)
 ```
 
+::: {.aside}
+Source: [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/overlapping-points.html), `Fig1-3_jitter.ipynb`
+:::
+
 ---
 
 ## Partial transparency
@@ -871,3 +932,184 @@ p_mpg_jitter <- ggplot(mpg, aes(y = cty, x = displ, color = drv, fill = drv)) +
 
 p_mpg_jitter
 ```
+
+---
+
+### Using jitter to visualize outliers
+
+![](./images/Jitter_boxplots.png)
+
+::: aside
+Source: [https://doi.org/10.1016/j.gaitpost.2017.12.015](https://doi.org/10.1016/j.gaitpost.2017.12.015)
+:::
+
+---
+
+## The `facets` layer
+
+- Faceting = splitting a dataset into subsets and drawing the `same plot design` for each subset.
+- It's a declarative way to show conditional relationships: "plot `y` vs `x` for each level of variable z".
+- Benefits: compares patterns across groups while keeping scales and geoms consistent.
+- The row and column variables must be categorical.
+
+---
+
+## Violin plots example
+
+![](./images/facets_violinplots_example.png)
+
+::: aside
+penguins.csv
+:::
+
+---
+
+## Heatmap facets example
+
+![](./images/facets_example.png)
+
+::: aside
+Source: [https://doi.org/10.1016/j.gaitpost.2017.12.015](https://doi.org/10.1016/j.gaitpost.2017.12.015)
+:::
+
+---
+
+### Plotly Express — interactive faceting
+
+```{python}
+#| echo: true
+df = px.data.tips()
+fig = px.scatter(df, x="total_bill", y="tip", facet_col="sex", color="smoker",
+                 title="Tip vs Bill faceted by sex")
+fig.update_layout(legend_title_text="Smoker");
+fig.show()
+```
+
+---
+
+## Coodinate systems
+
+- In the **Grammar of Graphics**, the *coordinate system* defines how data coordinates are mapped to the **2D plane** of the plot.
+- It determines:
+  - The *axes* (orientation and scaling)
+  - The *shape* of geometric objects
+  - The *relationships* between x and y aesthetics
+
+---
+
+## Importance of coordinate systems
+
+- They control **how data is drawn**, not **what data** is shown.
+- Changing coordinates can:
+  - Flip, stretch, or transform plots
+  - Reveal patterns not visible in the default Cartesian system
+  - Support specialized visualizations (like polar plots)
+
+---
+
+## Common Coordinate Systems
+
+```{r}
+
+coords <- data.frame(
+  Coordinate_System = c(
+    "coord_cartesian()", 
+    "coord_flip()", 
+    "coord_fixed()", 
+    "coord_polar()", 
+    "coord_quickmap()", 
+    "coord_trans()"
+  ),
+  Description = c(
+    "Default Cartesian coordinates; standard x-y axes.",
+    "Swaps x and y axes — useful for horizontal bar plots.",
+    "Ensures fixed aspect ratio between x and y units.",
+    "Converts Cartesian to polar coordinates (e.g., pie charts).",
+    "Approximates a Mercator projection — great for maps.",
+    "Applies a mathematical transformation to axes (e.g., log scale)."
+  )
+)
+
+coords %>%
+  gt() %>%
+  tab_header(title = md("**Common Coordinate Systems in ggplot2**")) %>%
+  cols_label(
+    Coordinate_System = md("**Function**"),
+    Description = md("**Description**")
+  ) %>%
+  tab_style(
+    style = cell_text(font = google_font("Fira Code"), weight = "bold"),
+    locations = cells_body(columns = "Coordinate_System")
+  ) %>%
+  # cols_width(
+  #   Coordinate_System ~ px(180),
+  #   Description ~ px(600)
+  # ) %>%
+  opt_table_font(size = 20)
+```
+
+---
+
+## Example: Polar Coordinates {.smaller}
+
+::: {.columns}
+
+::: {.column width="60%"}
+
+```{r}
+#| fig-width: 6
+
+# Generate synthetic daily temperature data
+set.seed(123)
+days <- 1:365
+temp <- 10 + 10 * sin(2 * pi * days / 365) + rnorm(365, sd = 2)
+climate <- data.frame(day = days, temp = temp)
+
+ggplot(climate, aes(x = day, y = temp)) +
+  geom_line(color = "#0072B2", linewidth = 0.9) +
+  coord_polar(start = pi/2) +
+  scale_x_continuous(
+    breaks = seq(0, 365, by = 90),
+    labels = c("Jan", "Apr", "Jul", "Oct", "Jan")
+  ) +
+  labs(
+    title = "Annual Temperature Cycle",
+    x = NULL, y = "Temperature (°C)"
+  ) +
+  theme_minimal(base_size = 18) +
+  theme(
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.title = element_text(hjust = 0.5, face = "bold")
+  )
+```
+:::
+
+::: {.column width="38%"}
+- Synthetic daily temperature data
+- **time series** -> **circular layout**,  
+- The **x-axis** (day of year) -> **angle**.  
+- The **y-axis** (temperature) -> **distance from center**. 
+:::
+::::
+
+::: aside
+This type of visualization helps identify repeating trends —  
+like *seasonal temperature variation* — in a compact, intuitive way.
+:::
+
+---
+
+## RUG plot app
+
+Create `facets`, `violin plots`, `tikz` using:  [![](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Venustiano/DataVis2/HEAD?urlpath=git-pull%3Frepo%3Dhttps%3A%2F%2Fgithub.com%2FVenustiano%2FDataVisMaterial)
+
+![](./images/rugplotapp.png)
+
+---
+
+## The Grammar o Graphics in python
+
+[plotnine](https://mybinder.org/v2/gh/Venustiano/dvizpy/HEAD)
+
