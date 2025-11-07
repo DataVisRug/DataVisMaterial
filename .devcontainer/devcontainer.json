@@ -1,12 +1,6 @@
 {
-  "name": "datavismaterial",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": "..",
-    "args": {
-      "QUARTO_VERSION": "1.8.25"
-    }
-  },
+  "name": "DataVisMaterial Codespace (GHCR image)",
+  "image": "ghcr.io/datavisrug/datavismaterial:dev-latest",
   "workspaceFolder": "/home/jovyan/work",
   "workspaceMount": "source=${localWorkspaceFolder},target=/home/jovyan/work,type=bind,consistency=cached",
   "remoteUser": "jovyan",
